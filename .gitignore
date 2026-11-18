@@ -7,5 +7,12 @@ video_frames/
 video_screen_crops/
 /*.jpg
 /*.ttf
-__pycache__/
+node_modules/
 *.pyc
+__pycache__/
+.edge_*
+test_*.py
+test_time_*.png
+diff_pose.png
+diag_edge.py
+debug_*.py
