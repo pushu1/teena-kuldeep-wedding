@@ -18,13 +18,8 @@ export default function App() {
   const [isMuted, setIsMuted] = useState(false);
 
   const toggleMusic = () => {
-    const audio = document.getElementById('bgm-player');
-    if (!audio) return;
-    if (audio.paused) {
-      audio.play().then(() => setIsMuted(false)).catch(() => {});
-    } else {
-      audio.pause();
-      setIsMuted(true);
+    if (typeof window.toggleWeddingMusic === 'function') {
+      window.toggleWeddingMusic();
     }
   };
 
@@ -40,8 +35,8 @@ export default function App() {
       {/* Background Falling Golden Sparkles & Rose Petals */}
       <PetalsCanvas />
 
-      {/* Background Royal Instrumental Music Player */}
-      <MusicPlayer audioSrc="assets/wedding_bgm.mp3" />
+      {/* Background Royal Wedding Music Player (YouTube IFrame API) */}
+      <MusicPlayer />
 
       {/* Cinematic Opening Screen vs Main Wedding Celebration */}
       {!hasOpenedEnvelope ? (

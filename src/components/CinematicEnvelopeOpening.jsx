@@ -239,11 +239,10 @@ export default function CinematicEnvelopeOpening({ onOpenComplete, onToggleMusic
     if (stage !== 'closed') return;
     setStage('opening');
 
-    // Attempt to start audio on user action
+    // Attempt to start wedding background music on user gesture
     try {
-      const audio = document.getElementById('bgm-player');
-      if (audio && audio.paused) {
-        audio.play().catch(() => {});
+      if (typeof window.playWeddingMusic === 'function') {
+        window.playWeddingMusic();
       }
     } catch (e) {}
 
@@ -265,9 +264,8 @@ export default function CinematicEnvelopeOpening({ onOpenComplete, onToggleMusic
   const handleSkipIntro = () => {
     // Attempt audio on skip as user intent
     try {
-      const audio = document.getElementById('bgm-player');
-      if (audio && audio.paused) {
-        audio.play().catch(() => {});
+      if (typeof window.playWeddingMusic === 'function') {
+        window.playWeddingMusic();
       }
     } catch (e) {}
 

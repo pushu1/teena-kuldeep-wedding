@@ -243,10 +243,8 @@ var RoyalWeddingApp = (() => {
       if (stage !== "closed") return;
       setStage("opening");
       try {
-        const audio = document.getElementById("bgm-player");
-        if (audio && audio.paused) {
-          audio.play().catch(() => {
-          });
+        if (typeof window.playWeddingMusic === "function") {
+          window.playWeddingMusic();
         }
       } catch (e) {
       }
@@ -260,10 +258,8 @@ var RoyalWeddingApp = (() => {
     };
     const handleSkipIntro = () => {
       try {
-        const audio = document.getElementById("bgm-player");
-        if (audio && audio.paused) {
-          audio.play().catch(() => {
-          });
+        if (typeof window.playWeddingMusic === "function") {
+          window.playWeddingMusic();
         }
       } catch (e) {
       }
@@ -857,44 +853,169 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
 
   // src/components/MusicPlayer.jsx
   var import_react11 = __toESM(__require("react"));
-  function MusicPlayer({ audioSrc = "assets/wedding_bgm.mp3" }) {
+  var YOUTUBE_VIDEO_ID = "qJFPtcK8qBg";
+  var START_TIME_SECONDS = 30;
+  function MusicPlayer() {
     const [isPlaying, setIsPlaying] = (0, import_react11.useState)(false);
-    const audioRef = (0, import_react11.useRef)(null);
+    const [isReady, setIsReady] = (0, import_react11.useState)(false);
+    const playerRef = (0, import_react11.useRef)(null);
+    const hasInitiallyStartedRef = (0, import_react11.useRef)(false);
+    const pendingPlayRef = (0, import_react11.useRef)(false);
     (0, import_react11.useEffect)(() => {
-      const audio = audioRef.current;
-      if (!audio) return;
-      audio.volume = 0.5;
-      const onPlay = () => setIsPlaying(true);
-      const onPause = () => setIsPlaying(false);
-      audio.addEventListener("play", onPlay);
-      audio.addEventListener("pause", onPause);
+      let checkInterval = null;
+      const setupPlayer = () => {
+        if (!window.YT || !window.YT.Player) return false;
+        const container = document.getElementById("youtube-bgm-container");
+        if (!container) return false;
+        if (playerRef.current) return true;
+        try {
+          playerRef.current = new window.YT.Player("youtube-bgm-container", {
+            height: "1",
+            width: "1",
+            videoId: YOUTUBE_VIDEO_ID,
+            playerVars: {
+              autoplay: 0,
+              start: START_TIME_SECONDS,
+              controls: 0,
+              disablekb: 1,
+              fs: 0,
+              rel: 0,
+              modestbranding: 1,
+              playsinline: 1,
+              loop: 1,
+              playlist: YOUTUBE_VIDEO_ID,
+              origin: window.location.origin
+            },
+            events: {
+              onReady: () => {
+                setIsReady(true);
+                if (pendingPlayRef.current) {
+                  pendingPlayRef.current = false;
+                  startPlayAt30();
+                }
+              },
+              onStateChange: (event) => {
+                if (event.data === 1) {
+                  setIsPlaying(true);
+                } else if (event.data === 2) {
+                  setIsPlaying(false);
+                } else if (event.data === 0) {
+                  if (playerRef.current && playerRef.current.seekTo) {
+                    playerRef.current.seekTo(START_TIME_SECONDS, true);
+                    playerRef.current.playVideo();
+                  }
+                }
+              },
+              onError: (err) => {
+                console.warn("YouTube BGM Player notice:", err);
+              }
+            }
+          });
+          return true;
+        } catch (err) {
+          console.warn("Error setting up YT Player:", err);
+          return false;
+        }
+      };
+      if (!setupPlayer()) {
+        const prevCallback = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => {
+          if (typeof prevCallback === "function") prevCallback();
+          setupPlayer();
+        };
+        checkInterval = setInterval(() => {
+          if (window.YT && window.YT.Player) {
+            if (setupPlayer()) {
+              clearInterval(checkInterval);
+            }
+          }
+        }, 400);
+      }
+      window.playWeddingMusic = () => {
+        startPlayAt30();
+      };
+      window.pauseWeddingMusic = () => {
+        if (playerRef.current && playerRef.current.pauseVideo) {
+          playerRef.current.pauseVideo();
+          setIsPlaying(false);
+        }
+      };
+      window.toggleWeddingMusic = () => {
+        toggleMusic();
+      };
       return () => {
-        audio.removeEventListener("play", onPlay);
-        audio.removeEventListener("pause", onPause);
+        if (checkInterval) clearInterval(checkInterval);
+        window.playWeddingMusic = null;
+        window.pauseWeddingMusic = null;
+        window.toggleWeddingMusic = null;
       };
     }, []);
-    const toggleMusic = (e) => {
-      e.stopPropagation();
-      const audio = audioRef.current;
-      if (!audio) return;
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play().catch((err) => {
-          console.warn("Playback gesture required:", err);
-        });
+    const startPlayAt30 = () => {
+      if (!playerRef.current || !playerRef.current.playVideo) {
+        pendingPlayRef.current = true;
+        return;
+      }
+      try {
+        if (!hasInitiallyStartedRef.current) {
+          playerRef.current.seekTo(START_TIME_SECONDS, true);
+          hasInitiallyStartedRef.current = true;
+        }
+        playerRef.current.playVideo();
+        setIsPlaying(true);
+      } catch (e) {
+        console.warn("Playback gesture required:", e);
       }
     };
-    return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement("audio", { id: "bgm-player", ref: audioRef, src: audioSrc, loop: true, preload: "auto" }), /* @__PURE__ */ import_react11.default.createElement("aside", { className: "music-player-aside", "aria-label": "Royal Wedding Music" }, /* @__PURE__ */ import_react11.default.createElement(
+    const toggleMusic = (e) => {
+      if (e) e.stopPropagation();
+      if (!playerRef.current || !playerRef.current.playVideo) {
+        pendingPlayRef.current = true;
+        return;
+      }
+      try {
+        if (isPlaying) {
+          playerRef.current.pauseVideo();
+          setIsPlaying(false);
+        } else {
+          if (!hasInitiallyStartedRef.current) {
+            playerRef.current.seekTo(START_TIME_SECONDS, true);
+            hasInitiallyStartedRef.current = true;
+          }
+          playerRef.current.playVideo();
+          setIsPlaying(true);
+        }
+      } catch (err) {
+        console.warn("Toggle music error:", err);
+      }
+    };
+    return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement(
+      "div",
+      {
+        id: "youtube-bgm-container",
+        "aria-hidden": "true",
+        style: {
+          position: "fixed",
+          width: "1px",
+          height: "1px",
+          bottom: "0",
+          right: "0",
+          opacity: "0.001",
+          pointerEvents: "none",
+          zIndex: -1
+        }
+      }
+    ), /* @__PURE__ */ import_react11.default.createElement("aside", { className: "royal-music-aside", "aria-label": "Royal Wedding Background Music" }, /* @__PURE__ */ import_react11.default.createElement(
       "button",
       {
-        className: `floating-music-btn ${isPlaying ? "is-playing" : ""}`,
+        className: `royal-music-pill-btn ${isPlaying ? "is-playing" : "is-paused"}`,
         onClick: toggleMusic,
-        "aria-label": isPlaying ? "Pause wedding music" : "Play wedding music",
-        title: isPlaying ? "Pause Royal Instrumental Music" : "Play Royal Instrumental Music"
+        "aria-label": isPlaying ? "Turn Royal Music OFF (Pause)" : "Turn Royal Music ON (Play)",
+        title: isPlaying ? "Turn Royal Music OFF (Pause)" : "Turn Royal Music ON (Play from 00:30)"
       },
-      /* @__PURE__ */ import_react11.default.createElement("div", { className: "music-btn-glow" }),
-      isPlaying ? /* @__PURE__ */ import_react11.default.createElement("div", { className: "audio-equalizer" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-1" }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-2" }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-3" })) : /* @__PURE__ */ import_react11.default.createElement("span", { className: "music-note-icon" }, "\u{1F3B5}")
+      /* @__PURE__ */ import_react11.default.createElement("span", { className: "pill-music-icon", "aria-hidden": "true" }, "\u266A"),
+      /* @__PURE__ */ import_react11.default.createElement("span", { className: "pill-title-text" }, "ROYAL MUSIC"),
+      /* @__PURE__ */ import_react11.default.createElement("span", { className: "pill-status-badge" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: `status-dot ${isPlaying ? "dot-on" : "dot-off"}` }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "status-label" }, isPlaying ? "ON" : "OFF")),
+      isPlaying && /* @__PURE__ */ import_react11.default.createElement("span", { className: "pill-mini-equalizer", "aria-hidden": "true" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-1" }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-2" }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "eq-bar bar-3" }))
     )));
   }
 
@@ -990,14 +1111,8 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     const [isViewerOpen, setIsViewerOpen] = (0, import_react13.useState)(false);
     const [isMuted, setIsMuted] = (0, import_react13.useState)(false);
     const toggleMusic = () => {
-      const audio = document.getElementById("bgm-player");
-      if (!audio) return;
-      if (audio.paused) {
-        audio.play().then(() => setIsMuted(false)).catch(() => {
-        });
-      } else {
-        audio.pause();
-        setIsMuted(true);
+      if (typeof window.toggleWeddingMusic === "function") {
+        window.toggleWeddingMusic();
       }
     };
     const scrollTo = (id) => {
@@ -1006,7 +1121,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
         el.scrollIntoView({ behavior: "smooth" });
       }
     };
-    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "royal-wedding-app" }, /* @__PURE__ */ import_react13.default.createElement(PetalsCanvas, null), /* @__PURE__ */ import_react13.default.createElement(MusicPlayer, { audioSrc: "assets/wedding_bgm.mp3" }), !hasOpenedEnvelope ? /* @__PURE__ */ import_react13.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "royal-wedding-app" }, /* @__PURE__ */ import_react13.default.createElement(PetalsCanvas, null), /* @__PURE__ */ import_react13.default.createElement(MusicPlayer, null), !hasOpenedEnvelope ? /* @__PURE__ */ import_react13.default.createElement(
       CinematicEnvelopeOpening,
       {
         onOpenComplete: () => setHasOpenedEnvelope(true),

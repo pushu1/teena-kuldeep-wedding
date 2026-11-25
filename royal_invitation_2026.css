@@ -2154,3 +2154,149 @@ body {
     font-size: 8px;
   }
 }
+
+/* ==========================================================================
+   ROYAL FLOATING BACKGROUND MUSIC CONTROL
+   ========================================================================== */
+
+.royal-music-aside {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.royal-music-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(100, 27, 46, 0.95) 0%, rgba(59, 16, 28, 0.98) 100%);
+  border: 1.5px solid #D4AF65;
+  border-radius: 28px;
+  padding: 8px 16px;
+  color: #E8D5A3;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), 0 0 12px rgba(212, 175, 101, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  user-select: none;
+}
+
+.royal-music-pill-btn:hover {
+  transform: translateY(-2px);
+  border-color: #FFF9ED;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 101, 0.55);
+}
+
+.royal-music-pill-btn:active {
+  transform: translateY(1px);
+}
+
+.pill-music-icon {
+  color: #D4AF65;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.pill-title-text {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #FFF9ED;
+}
+
+.pill-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.royal-music-pill-btn.is-playing .pill-status-badge {
+  background: linear-gradient(135deg, #D4AF65 0%, #B88B38 100%);
+  color: #3B101C;
+  box-shadow: 0 0 8px rgba(212, 175, 101, 0.6);
+}
+
+.royal-music-pill-btn.is-paused .pill-status-badge {
+  background: rgba(212, 175, 101, 0.15);
+  color: #E8D5A3;
+  border: 1px solid rgba(212, 175, 101, 0.4);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-on {
+  background-color: #641B2E;
+  box-shadow: 0 0 4px #3B101C;
+  animation: pulseDot 1.5s infinite alternate;
+}
+
+.dot-off {
+  background-color: rgba(232, 213, 163, 0.6);
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+.pill-mini-equalizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  margin-left: 2px;
+}
+
+.pill-mini-equalizer .eq-bar {
+  width: 2.5px;
+  background-color: #D4AF65;
+  border-radius: 1px;
+  animation: royalEq 1s infinite alternate ease-in-out;
+}
+
+.pill-mini-equalizer .bar-1 { height: 40%; animation-delay: 0.1s; }
+.pill-mini-equalizer .bar-2 { height: 85%; animation-delay: 0.3s; }
+.pill-mini-equalizer .bar-3 { height: 60%; animation-delay: 0.2s; }
+
+@keyframes royalEq {
+  0% { height: 25%; }
+  100% { height: 100%; }
+}
+
+@media (max-width: 600px) {
+  .royal-music-aside {
+    bottom: 16px;
+    right: 14px;
+  }
+  .royal-music-pill-btn {
+    padding: 7px 12px;
+    gap: 6px;
+  }
+  .pill-title-text {
+    font-size: 9.5px;
+    letter-spacing: 1px;
+  }
+  .pill-status-badge {
+    padding: 2px 6px;
+    font-size: 8.5px;
+  }
+}
