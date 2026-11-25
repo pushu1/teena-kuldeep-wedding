@@ -22,7 +22,7 @@ HTML_FILE = os.path.join(PROJECT_DIR, 'print_single_page_cover.html')
 FILE_URL = f"file:///{HTML_FILE.replace(os.sep, '/')}"
 
 OUT_PDF = os.path.join(PROJECT_DIR, 'Teena_Kuldeep_Digital_Wedding_Invitation.pdf')
-PRODUCTION_URL = "https://pushu1.github.io/param-pummy-wedding/"
+PRODUCTION_URL = "https://pushu1.github.io/teena-kuldeep-wedding/"
 
 PORT = 9228
 browser_profile_dir = os.path.join(PROJECT_DIR, '.browser_pdf_gen')

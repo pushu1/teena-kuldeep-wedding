@@ -171,7 +171,7 @@ export default function InvitationViewerModal({ isOpen, onClose }) {
 
           <div className="viewer-thumbnail-strip">
             <a
-              href="https://pushu1.github.io/param-pummy-wedding/"
+              href="https://pushu1.github.io/teena-kuldeep-wedding/"
               target="_blank"
               rel="noopener noreferrer"
               className="thumb-btn active"

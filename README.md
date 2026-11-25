@@ -6,9 +6,9 @@
 
 ## 🌟 Live Public Invitation Website & Repositories
 
-- **Live URL:** [https://pushu1.github.io/param-pummy-wedding/](https://pushu1.github.io/param-pummy-wedding/)
+- **Live URL:** [https://pushu1.github.io/teena-kuldeep-wedding/](https://pushu1.github.io/teena-kuldeep-wedding/)
 - **Vercel Project Name:** `kuldeep-teena-wedding`
-- **GitHub Repository:** [pushu1/param-pummy-wedding](https://github.com/pushu1/param-pummy-wedding)
+- **GitHub Repository:** [pushu1/teena-kuldeep-wedding](https://github.com/pushu1/teena-kuldeep-wedding)
 - **Local Project Path:** `C:\Users\Hp\.gemini\antigravity\scratch\param-pummy-wedding`
 - **Preserved Archive:** Previous Param & Pummy invitation remains intact at `/param-pummy/index.html`.
 

@@ -24,7 +24,7 @@ HTML_FILE = os.path.join(PROJECT_DIR, 'print_new_luxury_cover.html').replace('\\
 FILE_URL = f"file:///{HTML_FILE}"
 
 OUT_PDF = os.path.join(PROJECT_DIR, 'Teena_Kuldeep_New_Royal_Digital_Invitation.pdf')
-PRODUCTION_URL = "https://pushu1.github.io/param-pummy-wedding/"
+PRODUCTION_URL = "https://pushu1.github.io/teena-kuldeep-wedding/"
 
 # Find an available port dynamically
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -864,7 +864,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
       /* @__PURE__ */ import_react10.default.createElement("footer", { className: "viewer-bottom-bar" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "page-caption-block" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "caption-title" }, coverPage.title), /* @__PURE__ */ import_react10.default.createElement("div", { className: "caption-subtitle" }, coverPage.sub)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "viewer-thumbnail-strip" }, /* @__PURE__ */ import_react10.default.createElement(
         "a",
         {
-          href: "https://pushu1.github.io/param-pummy-wedding/",
+          href: "https://pushu1.github.io/teena-kuldeep-wedding/",
           target: "_blank",
           rel: "noopener noreferrer",
           className: "thumb-btn active",

@@ -378,7 +378,7 @@ def run_tests():
         for a in annots:
             obj = a.get_object()
             action = obj.get('/A')
-            if action and action.get('/URI') == 'https://pushu1.github.io/param-pummy-wedding/':
+            if action and action.get('/URI') == 'https://pushu1.github.io/teena-kuldeep-wedding/':
                 found_link = True
                 print(f"Active PDF Hyperlink verified: {action.get('/URI')} with Rect {obj.get('/Rect')}")
         assert found_link, "PDF Link Annotation to website not found!"

@@ -59,8 +59,8 @@ for a in annots:
     action = obj.get('/A')
     uri = action.get('/URI') if action else None
     print(f"Annotation: Subtype={subtype}, Rect={rect}, URI={uri}")
-    if subtype == '/Link' and uri == 'https://pushu1.github.io/param-pummy-wedding/':
+    if subtype == '/Link' and uri == 'https://pushu1.github.io/teena-kuldeep-wedding/':
         verified_links.append(obj)
 
 assert len(verified_links) > 0, "No active link to production website found!"
-print(f"\n[PASSED] ALL VERIFICATIONS PASSED SUCCESSFULLY! Active hyperlink confirmed to https://pushu1.github.io/param-pummy-wedding/.")
+print(f"\n[PASSED] ALL VERIFICATIONS PASSED SUCCESSFULLY! Active hyperlink confirmed to https://pushu1.github.io/teena-kuldeep-wedding/.")
