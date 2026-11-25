@@ -101,8 +101,8 @@ def run_tests():
     # 2. Page count and dimensions check
     doc = pdfium.PdfDocument(pdf_path)
     page_count = len(doc)
-    print(f"[PASS] 2. PDF Page count: {page_count} (Expected: 2)")
-    assert page_count == 2, f"Expected 2 pages, got {page_count}"
+    print(f"[PASS] 2. PDF Page count: {page_count} (Expected: 1)")
+    assert page_count == 1, f"Expected 1 page, got {page_count}"
 
     for i in range(page_count):
         page = doc[i]

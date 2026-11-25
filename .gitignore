@@ -16,3 +16,5 @@ test_time_*.png
 diff_pose.png
 diag_edge.py
 debug_*.py
+.browser_*
+raw_*.pdf

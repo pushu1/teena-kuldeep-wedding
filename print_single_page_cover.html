@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teena &amp; Kuldeep — Royal Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: 148mm 210mm;
+      margin: 0;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 148mm;
+      height: 210mm;
+      margin: 0;
+      padding: 0;
+      background-color: #240710;
+      color: #FFF9ED;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: hidden;
+    }
+
+    .pdf-single-cover {
+      width: 148mm;
+      height: 210mm;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 30%, #4a1020 0%, #2e0813 55%, #180309 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10mm 12mm 9mm;
+      box-sizing: border-box;
+    }
+
+    /* Ambient Gold Shimmer & Vignette */
+    .bg-shimmer-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 35%, rgba(212, 175, 101, 0.18) 0%, transparent 65%),
+                  linear-gradient(180deg, rgba(212, 175, 101, 0.08) 0%, transparent 40%, rgba(212, 175, 101, 0.08) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Outer Dual Gold Border */
+    .cover-frame-outer {
+      position: absolute;
+      top: 5mm;
+      bottom: 5mm;
+      left: 5mm;
+      right: 5mm;
+      border: 1.5pt solid #D4AF65;
+      border-radius: 3mm;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .cover-frame-inner {
+      position: absolute;
+      top: 6.6mm;
+      bottom: 6.6mm;
+      left: 6.6mm;
+      right: 6.6mm;
+      border: 0.6pt solid rgba(232, 213, 163, 0.5);
+      border-radius: 2mm;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Corner Flourishes */
+    .corner-flourish {
+      position: absolute;
+      width: 16mm;
+      height: 16mm;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .c-tl { top: 5mm; left: 5mm; }
+    .c-tr { top: 5mm; right: 5mm; transform: scaleX(-1); }
+    .c-bl { bottom: 5mm; left: 5mm; transform: scaleY(-1); }
+    .c-br { bottom: 5mm; right: 5mm; transform: scale(-1); }
+
+    /* Content Layout */
+    .cover-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    /* Top Invocations */
+    .top-invocation-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1mm;
+    }
+    .ganesha-emblem-img {
+      width: 16mm;
+      height: auto;
+      margin-bottom: 1.5mm;
+      filter: drop-shadow(0 0 6px rgba(212, 175, 101, 0.7));
+    }
+    .shloka-title {
+      font-family: 'Cinzel', serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #E8D5A3;
+    }
+    .shubh-vivah-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 10pt;
+      color: #D4AF65;
+      margin-top: 0.5mm;
+    }
+
+    /* Dividers */
+    .gold-divider-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3mm;
+      width: 75%;
+      margin: 1.5mm 0;
+    }
+    .divider-line {
+      flex: 1;
+      height: 0.6pt;
+      background: linear-gradient(90deg, transparent, #D4AF65, transparent);
+    }
+    .divider-sparkle {
+      color: #D4AF65;
+      font-size: 8pt;
+      line-height: 1;
+    }
+
+    /* Main Headings */
+    .main-wedding-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11pt;
+      font-weight: 800;
+      letter-spacing: 2.8px;
+      color: #FFF9ED;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1.5mm;
+    }
+
+    .couple-title-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1mm 0;
+    }
+    .couple-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 21pt;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFF9ED;
+      line-height: 1.15;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
+    .couple-nickname {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      font-weight: 500;
+      color: #E8D5A3;
+      letter-spacing: 1px;
+      margin-left: 2mm;
+    }
+    .couple-ampersand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3mm;
+      width: 45mm;
+      margin: 0.5mm 0;
+    }
+    .ampersand-sign {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16pt;
+      color: #D4AF65;
+      line-height: 1;
+    }
+
+    /* Date Badge */
+    .date-pill-badge {
+      display: inline-block;
+      border: 1.2pt solid #D4AF65;
+      background: linear-gradient(90deg, rgba(100, 27, 46, 0.7) 0%, rgba(59, 16, 28, 0.9) 100%);
+      padding: 1.8mm 6mm;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      margin: 1.8mm 0;
+    }
+    .date-pill-text {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 9pt;
+      letter-spacing: 2px;
+      color: #FFF9ED;
+    }
+
+    /* Short Message */
+    .short-journey-message {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 12pt;
+      color: #E8D5A3;
+      margin: 1mm 0 2mm;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* ==========================================================================
+       THE PROMINENT "CLICK HERE" BUTTON WITH REAL HYPERLINK
+       ========================================================================== */
+    .click-here-button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2mm 0 1mm;
+    }
+
+    .royal-click-button {
+      display: block;
+      width: 105mm;
+      text-decoration: none;
+      background: linear-gradient(135deg, #FFF5DE 0%, #E8D5A3 25%, #D4AF65 60%, #A8843B 100%);
+      border: 1.8pt solid #FFF9ED;
+      border-radius: 6mm;
+      padding: 3.2mm 4mm;
+      box-shadow: 0 4mm 10mm rgba(0, 0, 0, 0.7),
+                  0 0 6mm rgba(212, 175, 101, 0.6);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-inner-frame {
+      border: 0.8pt dashed rgba(59, 16, 28, 0.6);
+      border-radius: 4.5mm;
+      padding: 1.8mm 2mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-main-action-text {
+      font-family: 'Cinzel', serif;
+      font-size: 14pt;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #3B101C;
+      line-height: 1.1;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-subtitle-action-text {
+      font-family: 'Cinzel', serif;
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #641B2E;
+      margin-top: 1mm;
+      text-transform: uppercase;
+    }
+
+    .btn-instruction-hint {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 6.8pt;
+      color: #E8D5A3;
+      margin-top: 2.2mm;
+      letter-spacing: 0.5px;
+      max-width: 95%;
+      line-height: 1.3;
+    }
+
+    /* Footer Signoff */
+    .cover-bottom-signoff {
+      margin-top: 1mm;
+      border-top: 0.5pt solid rgba(212, 175, 101, 0.35);
+      padding-top: 1.5mm;
+      width: 90%;
+    }
+    .signoff-family {
+      font-family: 'Cinzel', serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #E8D5A3;
+    }
+    .signoff-locations {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 6.2pt;
+      color: #D4AF65;
+      margin-top: 0.5mm;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="pdf-single-cover" id="page-cover">
+    <div class="bg-shimmer-vignette"></div>
+    <div class="cover-frame-outer"></div>
+    <div class="cover-frame-inner"></div>
+
+    <!-- Ornamental Corner Flourishes -->
+    <svg class="corner-flourish c-tl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.25)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.4" />
+      <circle cx="12" cy="12" r="2.8" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-flourish c-tr" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.25)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.4" />
+      <circle cx="12" cy="12" r="2.8" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-flourish c-bl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.25)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.4" />
+      <circle cx="12" cy="12" r="2.8" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-flourish c-br" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.25)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.4" />
+      <circle cx="12" cy="12" r="2.8" fill="#D4AF65" />
+    </svg>
+
+    <div class="cover-content">
+      
+      <!-- Top: Golden Lord Ganesha & Sacred Shloka -->
+      <div class="top-invocation-group">
+        <img
+          src="assets/champagne_ganesha_bright.png"
+          alt="Lord Ganesha Emblem"
+          class="ganesha-emblem-img"
+        />
+        <div class="shloka-title">|| SHREE GANESHAY NAMAH ||</div>
+        <div class="shubh-vivah-sub">Auspicious Wedding Celebration</div>
+      </div>
+
+      <div class="gold-divider-strip">
+        <div class="divider-line"></div>
+        <div class="divider-sparkle">&#10022;</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Main Heading: THE ROYAL WEDDING CELEBRATION -->
+      <div>
+        <h1 class="main-wedding-title">THE ROYAL WEDDING CELEBRATION</h1>
+      </div>
+
+      <!-- Couple Names: TEENA & KULDEEP -->
+      <div class="couple-title-block">
+        <div class="couple-name">
+          TEENA
+        </div>
+
+        <div class="couple-ampersand-row">
+          <div class="divider-line"></div>
+          <span class="ampersand-sign">&amp;</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="couple-name">
+          KULDEEP
+        </div>
+      </div>
+
+      <!-- Wedding Date -->
+      <div class="date-pill-badge">
+        <span class="date-pill-text">FRIDAY, 11 DECEMBER 2026</span>
+      </div>
+
+      <!-- Short Romantic Message -->
+      <p class="short-journey-message">
+        “Two Hearts, One Beautiful Journey”
+      </p>
+
+      <!-- PROMINENT CLICK HERE BUTTON WITH EMBEDDED PRODUCTION HYPERLINK -->
+      <div class="click-here-button-container">
+        <a
+          href="https://pushu1.github.io/param-pummy-wedding/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="royal-click-button"
+          id="btn-click-here-link"
+          aria-label="Click here to open royal wedding invitation website"
+        >
+          <div class="btn-inner-frame">
+            <span class="btn-main-action-text">✉ CLICK HERE ✦</span>
+            <span class="btn-subtitle-action-text">OPEN YOUR WEDDING INVITATION</span>
+          </div>
+        </a>
+
+        <p class="btn-instruction-hint">
+          Tap the button above to view the complete interactive invitation, itinerary, venue navigation, and live countdown.
+        </p>
+      </div>
+
+      <!-- Bottom Family Signoff -->
+      <div class="cover-bottom-signoff">
+        <div class="signoff-family">VAJPAYEE &amp; UPADHYAY FAMILIES</div>
+        <div class="signoff-locations">• JAIPUR &amp; PALI, RAJASTHAN, INDIA •</div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

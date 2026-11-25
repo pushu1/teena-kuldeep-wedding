@@ -1,35 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function MusicPlayer({ audioSrc = 'assets/wedding_audio_reference.mp3' }) {
+export default function MusicPlayer({ audioSrc = 'assets/wedding_bgm.mp3' }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = 0.55;
+    audio.volume = 0.5;
 
-    // Optional autoplay on first user interaction anywhere on the window
-    const handleFirstGesture = () => {
-      if (!hasInteracted && audio && audio.paused) {
-        setHasInteracted(true);
-        audio.play().then(() => {
-          setIsPlaying(true);
-        }).catch(() => {
-          // Browser prevented autoplay without explicit button press; keep paused
-        });
-      }
-    };
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
 
-    window.addEventListener('click', handleFirstGesture, { once: true });
-    window.addEventListener('touchstart', handleFirstGesture, { once: true });
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
 
     return () => {
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
     };
-  }, [hasInteracted]);
+  }, []);
 
   const toggleMusic = (e) => {
     e.stopPropagation();
@@ -38,25 +28,23 @@ export default function MusicPlayer({ audioSrc = 'assets/wedding_audio_reference
 
     if (isPlaying) {
       audio.pause();
-      setIsPlaying(false);
     } else {
-      audio.play().then(() => {
-        setIsPlaying(true);
-      }).catch(err => {
-        console.warn('Audio play request interrupted:', err);
+      audio.play().catch(err => {
+        console.warn('Playback gesture required:', err);
       });
     }
   };
 
   return (
     <>
-      <audio ref={audioRef} src={audioSrc} loop preload="auto" />
-      <aside className="music-player-aside" aria-label="Royal Wedding Shehnai Music">
+      <audio id="bgm-player" ref={audioRef} src={audioSrc} loop preload="auto" />
+      
+      <aside className="music-player-aside" aria-label="Royal Wedding Music">
         <button
           className={`floating-music-btn ${isPlaying ? 'is-playing' : ''}`}
           onClick={toggleMusic}
           aria-label={isPlaying ? 'Pause wedding music' : 'Play wedding music'}
-          title={isPlaying ? 'Pause Royal Wedding Music' : 'Play Royal Wedding Music'}
+          title={isPlaying ? 'Pause Royal Instrumental Music' : 'Play Royal Instrumental Music'}
         >
           <div className="music-btn-glow"></div>
           {isPlaying ? (
@@ -66,7 +54,7 @@ export default function MusicPlayer({ audioSrc = 'assets/wedding_audio_reference
               <span className="eq-bar bar-3"></span>
             </div>
           ) : (
-            <span className="music-note-icon">♫</span>
+            <span className="music-note-icon">🎵</span>
           )}
         </button>
       </aside>

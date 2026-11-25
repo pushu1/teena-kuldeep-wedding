@@ -81,13 +81,14 @@ export default function BlessingsThankYou() {
           </button>
 
           <a
-            href="public/downloads/kuldeep-teena-wedding-invitation.pdf"
-            download="Kuldeep-Teena-Wedding-Invitation.pdf"
+            href="downloads/kuldeep-teena-wedding-invitation.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="action-btn-pill btn-download-pdf"
-            title="Download Wedding Invitation PDF"
+            title="View Official Wedding Invitation PDF (1 Page)"
           >
             <span className="btn-icon">📜</span>
-            <span>Download Wedding Invitation PDF</span>
+            <span>View Official Invitation PDF</span>
           </a>
         </div>
 

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuldeep & Teena — Modern Royal Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      background-color: #123D3A;
+      color: #FAF8F2;
+      font-family: 'Cormorant Garamond', 'Noto Serif Devanagari', serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: hidden;
+    }
+
+    .pdf-page-single {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 50% 38%, #164844 0%, #123D3A 65%, #0B2523 100%);
+      padding: 16mm 14mm 14mm 14mm;
+    }
+
+    /* Outer delicate champagne border */
+    .cover-border-outer {
+      position: absolute;
+      top: 8mm;
+      left: 8mm;
+      right: 8mm;
+      bottom: 8mm;
+      border: 1.2px solid #D8C39A;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .cover-border-inner {
+      position: absolute;
+      top: 10mm;
+      left: 10mm;
+      right: 10mm;
+      bottom: 10mm;
+      border: 0.6px solid rgba(216, 195, 154, 0.45);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* Minimal botanical corner SVG */
+    .corner-botanical {
+      position: absolute;
+      width: 26mm;
+      height: 26mm;
+      pointer-events: none;
+    }
+    .corner-tl { top: 9mm; left: 9mm; }
+    .corner-tr { top: 9mm; right: 9mm; transform: scaleX(-1); }
+    .corner-bl { bottom: 9mm; left: 9mm; transform: scaleY(-1); }
+    .corner-br { bottom: 9mm; right: 9mm; transform: scale(-1, -1); }
+
+    /* Header Section */
+    .cover-header {
+      z-index: 2;
+      margin-top: 2mm;
+    }
+    .ganesha-emblem {
+      width: 18mm;
+      height: 18mm;
+      margin: 0 auto 2.5mm;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+    }
+    .cover-shloka {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: #D8C39A;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5mm;
+    }
+    .cover-blessing-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5pt;
+      letter-spacing: 3px;
+      color: #D8C39A;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 2.5mm;
+    }
+    .main-couple-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28pt;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #FAF8F2;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      margin-bottom: 2mm;
+    }
+    .main-couple-title span {
+      color: #D8C39A;
+      font-size: 22pt;
+      margin: 0 2mm;
+    }
+    .cover-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 9.5pt;
+      letter-spacing: 5px;
+      color: #97AB97;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Portraits Showcase */
+    .portraits-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9mm;
+      margin: 4mm 0;
+      z-index: 2;
+    }
+    .portrait-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .portrait-arch-frame {
+      width: 63mm;
+      height: 84mm;
+      border-radius: 32mm 32mm 8mm 8mm;
+      border: 2px solid #D8C39A;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+      overflow: hidden;
+      background-color: #0B2523;
+    }
+    .portrait-arch-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .portrait-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9.5pt;
+      letter-spacing: 2.5px;
+      color: #FAF8F2;
+      font-weight: 600;
+      margin-top: 3.5mm;
+    }
+
+    .connecting-symbol-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #D8C39A;
+    }
+    .connecting-star {
+      font-size: 22pt;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(216, 195, 154, 0.7));
+    }
+    .connecting-line {
+      width: 1px;
+      height: 18mm;
+      background: linear-gradient(to bottom, transparent, #D8C39A, transparent);
+      margin: 2mm 0;
+    }
+
+    /* Date Headline */
+    .cover-date-section {
+      z-index: 2;
+      margin-top: 2mm;
+    }
+    .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5mm;
+    }
+    .date-line {
+      width: 22mm;
+      height: 0.8px;
+      background: #D8C39A;
+    }
+    .date-text {
+      font-family: 'Cinzel', serif;
+      font-size: 14pt;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #D8C39A;
+    }
+    .venue-city {
+      font-family: 'Cinzel', serif;
+      font-size: 9pt;
+      letter-spacing: 4px;
+      color: #97AB97;
+      margin-top: 2mm;
+    }
+
+    /* Elegant Footer */
+    .cover-footer {
+      z-index: 2;
+      margin-bottom: 2mm;
+    }
+    .cover-footer-note {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5pt;
+      letter-spacing: 2.5px;
+      color: rgba(216, 195, 154, 0.85);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       ROYAL WEDDING INVITATION (MODERN ROYAL EMERALD & CHAMPAGNE)
+       SINGLE-PAGE PRINT-READY OFFICIAL INVITATION
+       ======================================================================== -->
+  <div class="pdf-page-single">
+    <div class="cover-border-outer"></div>
+    <div class="cover-border-inner"></div>
+
+    <!-- Minimal Botanical Corners SVG -->
+    <svg class="corner-botanical corner-tl" viewBox="0 0 100 100" fill="none">
+      <path d="M10 10 L60 10 M10 10 L10 60" stroke="#D8C39A" stroke-width="2"/>
+      <polygon points="10,10 16,16 10,22 4,16" fill="#D8C39A"/>
+      <path d="M16 16 C35 30 50 50 65 80" stroke="#97AB97" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28 26 C25 22 30 18 36 22 C37 28 32 30 28 26 Z" fill="#97AB97"/>
+      <path d="M42 38 C39 34 44 30 50 34 C51 40 46 42 42 38 Z" fill="#97AB97"/>
+      <path d="M54 54 C51 50 56 46 62 50 C63 56 58 58 54 54 Z" fill="#97AB97"/>
+      <circle cx="34" cy="24" r="2.5" fill="#D8C39A"/>
+      <circle cx="48" cy="36" r="2.5" fill="#D8C39A"/>
+    </svg>
+    <svg class="corner-botanical corner-tr" viewBox="0 0 100 100" fill="none">
+      <path d="M10 10 L60 10 M10 10 L10 60" stroke="#D8C39A" stroke-width="2"/>
+      <polygon points="10,10 16,16 10,22 4,16" fill="#D8C39A"/>
+      <path d="M16 16 C35 30 50 50 65 80" stroke="#97AB97" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28 26 C25 22 30 18 36 22 C37 28 32 30 28 26 Z" fill="#97AB97"/>
+      <path d="M42 38 C39 34 44 30 50 34 C51 40 46 42 42 38 Z" fill="#97AB97"/>
+      <path d="M54 54 C51 50 56 46 62 50 C63 56 58 58 54 54 Z" fill="#97AB97"/>
+      <circle cx="34" cy="24" r="2.5" fill="#D8C39A"/>
+      <circle cx="48" cy="36" r="2.5" fill="#D8C39A"/>
+    </svg>
+    <svg class="corner-botanical corner-bl" viewBox="0 0 100 100" fill="none">
+      <path d="M10 10 L60 10 M10 10 L10 60" stroke="#D8C39A" stroke-width="2"/>
+      <polygon points="10,10 16,16 10,22 4,16" fill="#D8C39A"/>
+      <path d="M16 16 C35 30 50 50 65 80" stroke="#97AB97" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28 26 C25 22 30 18 36 22 C37 28 32 30 28 26 Z" fill="#97AB97"/>
+      <path d="M42 38 C39 34 44 30 50 34 C51 40 46 42 42 38 Z" fill="#97AB97"/>
+      <path d="M54 54 C51 50 56 46 62 50 C63 56 58 58 54 54 Z" fill="#97AB97"/>
+      <circle cx="34" cy="24" r="2.5" fill="#D8C39A"/>
+      <circle cx="48" cy="36" r="2.5" fill="#D8C39A"/>
+    </svg>
+    <svg class="corner-botanical corner-br" viewBox="0 0 100 100" fill="none">
+      <path d="M10 10 L60 10 M10 10 L10 60" stroke="#D8C39A" stroke-width="2"/>
+      <polygon points="10,10 16,16 10,22 4,16" fill="#D8C39A"/>
+      <path d="M16 16 C35 30 50 50 65 80" stroke="#97AB97" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28 26 C25 22 30 18 36 22 C37 28 32 30 28 26 Z" fill="#97AB97"/>
+      <path d="M42 38 C39 34 44 30 50 34 C51 40 46 42 42 38 Z" fill="#97AB97"/>
+      <path d="M54 54 C51 50 56 46 62 50 C63 56 58 58 54 54 Z" fill="#97AB97"/>
+      <circle cx="34" cy="24" r="2.5" fill="#D8C39A"/>
+      <circle cx="48" cy="36" r="2.5" fill="#D8C39A"/>
+    </svg>
+
+    <!-- Header Section -->
+    <div class="cover-header">
+      <img src="assets/champagne_ganesha_bright.png" alt="Lord Ganesha" class="ganesha-emblem">
+      <div class="cover-shloka">॥ श्री गणेशाय नमः ॥</div>
+      <div class="cover-blessing-heading">BY THE DIVINE BLESSINGS OF LORD GANESHA</div>
+      <h1 class="main-couple-title">KULDEEP <span>✦</span> TEENA</h1>
+      <div class="cover-subtitle">ROYAL WEDDING INVITATION</div>
+    </div>
+
+    <!-- Portraits Showcase -->
+    <div class="portraits-row">
+      <!-- Groom Kuldeep -->
+      <div class="portrait-card">
+        <div class="portrait-arch-frame">
+          <img src="assets/groom_kuldeep.jpg" alt="Groom Kuldeep">
+        </div>
+        <div class="portrait-label">GROOM – Kuldeep</div>
+      </div>
+
+      <!-- Minimal Connecting symbol -->
+      <div class="connecting-symbol-wrap">
+        <div class="connecting-line"></div>
+        <div class="connecting-star">✦</div>
+        <div class="connecting-line"></div>
+      </div>
+
+      <!-- Bride Teena -->
+      <div class="portrait-card">
+        <div class="portrait-arch-frame">
+          <img src="assets/bride_teena.jpg" alt="Bride Teena">
+        </div>
+        <div class="portrait-label">BRIDE – Teena</div>
+      </div>
+    </div>
+
+    <!-- Date Headline: 11 DECEMBER 2026 -->
+    <div class="cover-date-section">
+      <div class="date-badge">
+        <div class="date-line"></div>
+        <div class="date-text">11 DECEMBER 2026</div>
+        <div class="date-line"></div>
+      </div>
+      <div class="venue-city">PALI, RAJASTHAN</div>
+    </div>
+
+    <!-- Cover Footer -->
+    <div class="cover-footer">
+      <div class="cover-footer-note">Upadhyay Family • Pali, Rajasthan</div>
+    </div>
+  </div>
+
+</body>
+</html>

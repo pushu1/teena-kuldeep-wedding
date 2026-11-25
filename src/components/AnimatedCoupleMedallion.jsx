@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AnimatedCoupleMedallion() {
+export default function AnimatedCoupleMedallion({ borderless = false, showHint = true }) {
   const [animKey, setAnimKey] = useState(0);
 
   const handleReplay = () => {
@@ -9,7 +9,7 @@ export default function AnimatedCoupleMedallion() {
 
   return (
     <div
-      className="medallion-container"
+      className={`medallion-container ${borderless ? 'borderless-arch-mode' : ''}`}
       onClick={handleReplay}
       title="Tap to replay royal greeting animation"
       role="button"
@@ -19,10 +19,10 @@ export default function AnimatedCoupleMedallion() {
       }}
     >
       {/* Golden Aura Glow Effect */}
-      <div className="medallion-aura-halo"></div>
+      {!borderless && <div className="medallion-aura-halo"></div>}
 
       {/* Decorative Outer Bevel Rim */}
-      <div className="medallion-outer-ring">
+      <div className={borderless ? "medallion-inner-canvas-wrap" : "medallion-outer-ring"}>
         <svg
           key={animKey}
           className="medallion-svg-canvas"
@@ -106,16 +106,20 @@ export default function AnimatedCoupleMedallion() {
         </svg>
 
         {/* Inner Gold Filigree Bezel Rim */}
-        <div className="medallion-inner-gold-rim"></div>
+        {!borderless && <div className="medallion-inner-gold-rim"></div>}
       </div>
 
       {/* Floating Gold Sparkle Accents */}
-      <span className="sparkle-star s-top-left">✦</span>
-      <span className="sparkle-star s-top-right">✦</span>
-      <span className="sparkle-star s-bot-left">✦</span>
-      <span className="sparkle-star s-bot-right">✦</span>
+      {!borderless && (
+        <>
+          <span className="sparkle-star s-top-left">✦</span>
+          <span className="sparkle-star s-top-right">✦</span>
+          <span className="sparkle-star s-bot-left">✦</span>
+          <span className="sparkle-star s-bot-right">✦</span>
+        </>
+      )}
 
-      <p className="medallion-tap-hint">✦ Tap portrait to replay greeting ✦</p>
+      {showHint && <p className="medallion-tap-hint">✦ Tap portrait to replay greeting ✦</p>}
     </div>
   );
 }

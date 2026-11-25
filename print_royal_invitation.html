@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teena &amp; Kuldeep — Royal Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: 148mm 210mm;
+      margin: 0;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 148mm;
+      margin: 0;
+      padding: 0;
+      background-color: #3B101C;
+      color: #3B101C;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .pdf-page {
+      width: 148mm;
+      height: 210mm;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+      background: #FFF9ED;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10mm 12mm;
+      box-sizing: border-box;
+    }
+
+    /* Subtle Royal Gold Radial Tint */
+    .bg-gradient-tint {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 25%, rgba(232, 213, 163, 0.35) 0%, rgba(255, 249, 237, 0) 70%),
+                  linear-gradient(180deg, rgba(100, 27, 46, 0.04) 0%, rgba(255, 249, 237, 0) 30%, rgba(100, 27, 46, 0.04) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Outer Dual Gold Border */
+    .page-frame-outer {
+      position: absolute;
+      top: 5mm;
+      bottom: 5mm;
+      left: 5mm;
+      right: 5mm;
+      border: 1.5pt solid #D4AF65;
+      border-radius: 2.5mm;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .page-frame-inner {
+      position: absolute;
+      top: 6.5mm;
+      bottom: 6.5mm;
+      left: 6.5mm;
+      right: 6.5mm;
+      border: 0.6pt solid rgba(212, 175, 101, 0.5);
+      border-radius: 1.8mm;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Ornamental Corner Flourishes */
+    .corner-ornament {
+      position: absolute;
+      width: 14mm;
+      height: 14mm;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .corner-tl { top: 5mm; left: 5mm; }
+    .corner-tr { top: 5mm; right: 5mm; transform: scaleX(-1); }
+    .corner-bl { bottom: 5mm; left: 5mm; transform: scaleY(-1); }
+    .corner-br { bottom: 5mm; right: 5mm; transform: scale(-1); }
+
+    /* Content Area */
+    .content-box {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    /* Gold Dividers & Accents */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3mm;
+      width: 80%;
+      margin: 1.5mm 0;
+    }
+    .gold-divider .line {
+      flex: 1;
+      height: 0.5pt;
+      background: linear-gradient(90deg, transparent, #D4AF65, transparent);
+    }
+    .gold-divider .diamond {
+      color: #D4AF65;
+      font-size: 8pt;
+      line-height: 1;
+    }
+
+    /* Typography System */
+    .title-royal {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 11pt;
+      letter-spacing: 2.5px;
+      color: #641B2E;
+      text-transform: uppercase;
+    }
+    .subtitle-script {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 11.5pt;
+      color: #8C6A28;
+      letter-spacing: 0.5px;
+    }
+    .couple-names-lg {
+      font-family: 'Playfair Display', serif;
+      font-size: 20pt;
+      font-weight: 700;
+      color: #641B2E;
+      line-height: 1.15;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 1.5mm 0;
+    }
+    .couple-ampersand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16pt;
+      color: #D4AF65;
+      display: block;
+      margin: -1mm 0;
+    }
+    .date-badge {
+      display: inline-block;
+      border: 1pt solid #D4AF65;
+      padding: 1.2mm 5mm;
+      border-radius: 20px;
+      background: rgba(232, 213, 163, 0.25);
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 8.5pt;
+      letter-spacing: 1.5px;
+      color: #641B2E;
+      margin: 1.5mm 0;
+    }
+    .body-invitation {
+      font-size: 8.5pt;
+      line-height: 1.45;
+      color: #3B101C;
+      max-width: 92%;
+      font-style: italic;
+    }
+    .family-lineage-box {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 3mm;
+      margin-top: 1.5mm;
+    }
+    .family-card-side {
+      flex: 1;
+      border: 0.6pt solid #D4AF65;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 2mm;
+      padding: 2mm 1.5mm;
+      text-align: center;
+    }
+    .family-role-label {
+      font-family: 'Cinzel', serif;
+      font-size: 6.5pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #8C6A28;
+      text-transform: uppercase;
+      margin-bottom: 0.8mm;
+    }
+    .family-person-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #641B2E;
+    }
+    .family-parents-text {
+      font-size: 7.5pt;
+      line-height: 1.35;
+      color: #3B101C;
+      margin-top: 0.8mm;
+    }
+
+    /* Event Timeline Styles for Page 2 */
+    .events-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+      margin: 1.5mm 0;
+    }
+    .day-block {
+      border: 0.8pt solid #D4AF65;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 2.5mm;
+      padding: 2.2mm 3mm;
+      text-align: left;
+    }
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 0.5pt solid rgba(212, 175, 101, 0.5);
+      padding-bottom: 1mm;
+      margin-bottom: 1.5mm;
+    }
+    .day-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 8.5pt;
+      letter-spacing: 1.5px;
+      color: #641B2E;
+    }
+    .day-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 7.5pt;
+      color: #8C6A28;
+    }
+    .event-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.2mm;
+    }
+    .event-row:last-child {
+      margin-bottom: 0;
+    }
+    .event-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 8.5pt;
+      color: #641B2E;
+    }
+    .event-desc {
+      font-size: 7pt;
+      color: #555;
+      font-style: italic;
+    }
+    .event-time-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 7pt;
+      color: #8C6A28;
+      background: rgba(212, 175, 101, 0.15);
+      padding: 0.5mm 1.8mm;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Venue Box on Page 2 & 3 */
+    .venue-summary-card {
+      width: 100%;
+      border: 0.8pt solid #D4AF65;
+      background: linear-gradient(180deg, rgba(232, 213, 163, 0.15) 0%, rgba(255, 255, 255, 0.85) 100%);
+      border-radius: 2.5mm;
+      padding: 2.5mm 3mm;
+      text-align: center;
+    }
+    .venue-title-sm {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 7pt;
+      letter-spacing: 2px;
+      color: #8C6A28;
+      text-transform: uppercase;
+      margin-bottom: 0.8mm;
+    }
+    .venue-name-lg {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 10pt;
+      color: #641B2E;
+      line-height: 1.25;
+    }
+    .venue-address-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7pt;
+      color: #4A3B32;
+      margin-top: 0.8mm;
+      line-height: 1.35;
+    }
+
+    /* Page 4 RSVP Lines */
+    .rsvp-form-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
+      margin: 3mm 0;
+      text-align: left;
+    }
+    .rsvp-field-line {
+      display: flex;
+      align-items: baseline;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.5pt;
+      color: #3B101C;
+    }
+    .rsvp-field-label {
+      font-weight: 600;
+      white-space: nowrap;
+      margin-right: 2mm;
+      color: #641B2E;
+    }
+    .rsvp-blank-fill {
+      flex: 1;
+      border-bottom: 0.6pt dashed #D4AF65;
+      height: 3mm;
+    }
+    .rsvp-wishes-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+      margin-top: 1mm;
+    }
+    .rsvp-wish-line {
+      width: 100%;
+      border-bottom: 0.6pt dashed #D4AF65;
+      height: 3mm;
+    }
+
+    /* Ambika Marble Printer Credit */
+    .printer-credit-footer {
+      border-top: 0.5pt solid rgba(212, 175, 101, 0.4);
+      padding-top: 1.5mm;
+      width: 100%;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5.5pt;
+      color: #7A6858;
+      line-height: 1.35;
+    }
+    .printer-credit-company {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #641B2E;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PAGE 1: ROYAL WEDDING INVITATION
+       ========================================== -->
+  <section class="pdf-page" id="page-1">
+    <div class="bg-gradient-tint"></div>
+    <div class="page-frame-outer"></div>
+    <div class="page-frame-inner"></div>
+
+    <!-- Decorative Corner SVGs -->
+    <svg class="corner-ornament corner-tl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-tr" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-bl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-br" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+
+    <div class="content-box">
+      <!-- Top Sacred Invocation -->
+      <div>
+        <div style="margin-bottom: 1.5mm;">
+          <img src="assets/champagne_ganesha_bright.png" alt="Lord Ganesha" style="width: 14mm; height: auto;" />
+        </div>
+        <div style="font-family: 'Cinzel', serif; font-size: 7.5pt; font-weight: 600; color: #8C6A28; letter-spacing: 2px;">
+          || SHREE GANESHAY NAMAH ||
+        </div>
+        <div class="subtitle-script" style="margin-top: 0.5mm;">
+          Auspicious Wedding Celebration (Shubh Vivah)
+        </div>
+      </div>
+
+      <div class="gold-divider">
+        <div class="line"></div>
+        <div class="diamond">&#10022;</div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Main Title & Couple Names -->
+      <div>
+        <div class="title-royal">THE ROYAL WEDDING CELEBRATION</div>
+        <div class="couple-names-lg">
+          TEENA
+          <span class="couple-ampersand">&amp;</span>
+          KULDEEP
+        </div>
+        <div class="date-badge">FRIDAY, 11 DECEMBER 2026</div>
+      </div>
+
+      <!-- Formal Invitation Message -->
+      <div class="body-invitation">
+        "With the blessings of the Almighty and our beloved elders, we cordially invite you and your family to grace the auspicious occasion of the wedding celebration of Teena &amp; Kuldeep.
+        <br><br>
+        Your gracious presence and blessings will make this special occasion even more memorable. We look forward to celebrating this beautiful union with you."
+      </div>
+
+      <div class="gold-divider">
+        <div class="line"></div>
+        <div class="diamond">&#10022;</div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Bride & Groom Family Lineage Cards -->
+      <div class="family-lineage-box">
+        <!-- Bride Card -->
+        <div class="family-card-side">
+          <div class="family-role-label">DAUGHTER OF</div>
+          <div class="family-person-name">TEENA</div>
+          <div class="family-parents-text">
+            Mrs. Manju Devi<br>
+            and<br>
+            <strong>Mr. Ramgopal Vajpayee</strong>
+          </div>
+        </div>
+
+        <!-- Groom Card -->
+        <div class="family-card-side">
+          <div class="family-role-label">SON OF</div>
+          <div class="family-person-name">KULDEEP</div>
+          <div class="family-parents-text">
+            Late Mrs. Pepi Devi<br>
+            and<br>
+            <strong>Late Mr. Champalal Ji Upadhyay</strong><br>
+            <span style="font-size: 6.8pt; color: #8C6A28;">Grandson of Mrs. Chanda Devi &amp; Mr. Jasraj Ji Upadhyay</span><br>
+            <span style="font-size: 6.5pt; color: #666;">Pali, Rajasthan, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 1.5px; color: #8C6A28; margin-top: 1mm;">
+        • JAIPUR &amp; PALI, RAJASTHAN •
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       PAGE 2: WEDDING CEREMONIES
+       ========================================== -->
+  <section class="pdf-page" id="page-2">
+    <div class="bg-gradient-tint"></div>
+    <div class="page-frame-outer"></div>
+    <div class="page-frame-inner"></div>
+
+    <!-- Decorative Corner SVGs -->
+    <svg class="corner-ornament corner-tl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-tr" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-bl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-br" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+
+    <div class="content-box">
+      <!-- Header -->
+      <div>
+        <div style="font-family: 'Cinzel', serif; font-size: 7pt; font-weight: 600; color: #8C6A28; letter-spacing: 2px;">
+          AUSPICIOUS CEREMONIES &amp; ITINERARY
+        </div>
+        <div class="title-royal" style="font-size: 13pt; margin-top: 0.5mm;">
+          WEDDING SCHEDULE
+        </div>
+        <div class="subtitle-script" style="font-size: 9.5pt;">
+          Celebrating with ancient Vedic traditions and sacred rituals
+        </div>
+      </div>
+
+      <div class="gold-divider">
+        <div class="line"></div>
+        <div class="diamond">&#10022;</div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Schedule Timeline -->
+      <div class="events-container">
+        <!-- DAY 1 -->
+        <div class="day-block">
+          <div class="day-header">
+            <div class="day-title">&#10022; DAY 1 — PRE-WEDDING CEREMONIES</div>
+            <div class="day-date">MONDAY, 07 DECEMBER 2026</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">1. Ganesh Invocation Ceremony</div>
+              <div class="event-desc">Commencing auspicious wedding rituals with divine blessings</div>
+            </div>
+            <div class="event-time-badge">5:15 AM</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">2. Lagan Vinayak Puja</div>
+              <div class="event-desc">Sacred Vedic puja seeking prosperity and eternal harmony</div>
+            </div>
+            <div class="event-time-badge">10:00 AM</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">3. Chak Pujan Ceremony</div>
+              <div class="event-desc">Traditional ancestral earthen pot ceremony &amp; blessings</div>
+            </div>
+            <div class="event-time-badge">4:00 PM</div>
+          </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="day-block" style="border-color: #641B2E; background: rgba(255, 250, 245, 0.9);">
+          <div class="day-header" style="border-bottom-color: rgba(100, 27, 46, 0.3);">
+            <div class="day-title" style="color: #641B2E;">&#10022; DAY 2 — THE WEDDING DAY</div>
+            <div class="day-date" style="color: #641B2E; font-weight: 700;">FRIDAY, 11 DECEMBER 2026</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">1. Wedding Reception Dinner (Preeti Bhoj)</div>
+              <div class="event-desc">A lavish royal feast to celebrate the joyous union</div>
+            </div>
+            <div class="event-time-badge" style="background: rgba(100, 27, 46, 0.12); color: #641B2E;">6:00 PM Onwards</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">2. Wedding Procession Welcome (Baraat Swagat)</div>
+              <div class="event-desc">Grand arrival of the groom and royal welcome ceremony</div>
+            </div>
+            <div class="event-time-badge" style="background: rgba(100, 27, 46, 0.12); color: #641B2E;">10:30 PM</div>
+          </div>
+
+          <div class="event-row">
+            <div>
+              <div class="event-name">3. Sacred Wedding Rituals (Panigrahan Sanskar)</div>
+              <div class="event-desc">Vedic wedding vows and seven holy rounds around the sacred fire</div>
+            </div>
+            <div class="event-time-badge" style="background: rgba(100, 27, 46, 0.12); color: #641B2E;">Auspicious Muhurat</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Venue Summary Card -->
+      <div class="venue-summary-card">
+        <div class="venue-title-sm">&#10022; WEDDING VENUE &#10022;</div>
+        <div class="venue-name-lg">SHRI ADINATH BRAHMIN SAMAJ DHARAMSHALA</div>
+        <div class="venue-address-text">
+          Tejaji Nagar, 80 Feet Road, Jaipur, Rajasthan, India
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       PAGE 3: WEDDING VENUE & FAMILY INVITATION
+       ========================================== -->
+  <section class="pdf-page" id="page-3">
+    <div class="bg-gradient-tint"></div>
+    <div class="page-frame-outer"></div>
+    <div class="page-frame-inner"></div>
+
+    <!-- Decorative Corner SVGs -->
+    <svg class="corner-ornament corner-tl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-tr" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-bl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-br" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+
+    <div class="content-box">
+      <!-- Venue Section -->
+      <div>
+        <div style="font-family: 'Cinzel', serif; font-size: 7pt; font-weight: 600; color: #8C6A28; letter-spacing: 2px;">
+          AUSPICIOUS DESTINATION
+        </div>
+        <div class="title-royal" style="font-size: 13pt; margin-top: 0.5mm;">
+          WEDDING VENUE
+        </div>
+        <div class="subtitle-script" style="font-size: 9.5pt;">
+          Where royal traditions meet heartfelt hospitality
+        </div>
+      </div>
+
+      <!-- Architectural Illustration / Pavilion Arch SVG -->
+      <div style="width: 85%; margin: 1mm 0;">
+        <svg viewBox="0 0 200 65" style="width: 100%; height: auto;">
+          <!-- Palace Dome Silhouette -->
+          <path d="M100 8 C95 18 80 20 70 30 C65 35 65 42 65 60 L135 60 C135 42 135 35 130 30 C120 20 105 18 100 8 Z" fill="rgba(212, 175, 101, 0.15)" stroke="#D4AF65" stroke-width="1" />
+          <path d="M100 2 L100 8" stroke="#D4AF65" stroke-width="1.5" />
+          <circle cx="100" cy="2" r="2" fill="#D4AF65" />
+          <!-- Arched Pillars -->
+          <rect x="40" y="32" width="6" height="28" rx="1.5" fill="#D4AF65" opacity="0.6" />
+          <rect x="154" y="32" width="6" height="28" rx="1.5" fill="#D4AF65" opacity="0.6" />
+          <path d="M30 60 L170 60" stroke="#D4AF65" stroke-width="1.5" />
+          <path d="M40 32 Q100 15 160 32" fill="none" stroke="#D4AF65" stroke-width="1.2" stroke-dasharray="2 2" />
+        </svg>
+      </div>
+
+      <div class="venue-summary-card" style="padding: 3mm 4mm;">
+        <div class="venue-name-lg" style="font-size: 11pt;">
+          SHRI ADINATH BRAHMIN SAMAJ DHARAMSHALA
+        </div>
+        <div class="venue-address-text" style="font-size: 8pt; margin-top: 1mm;">
+          Tejaji Nagar, 80 Feet Road, Jaipur, Rajasthan, India
+        </div>
+        <div style="font-family: 'Cinzel', serif; font-size: 6.5pt; color: #8C6A28; letter-spacing: 1px; margin-top: 1.5mm;">
+          • CONVENIENTLY ACCESSIBLE VIA AIRPORT &amp; RAILWAY STATIONS •
+        </div>
+      </div>
+
+      <div class="gold-divider">
+        <div class="line"></div>
+        <div class="diamond">&#10022;</div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Family Compliments Section -->
+      <div style="width: 100%;">
+        <div class="title-royal" style="font-size: 9.5pt; letter-spacing: 2px;">
+          WITH BEST COMPLIMENTS FROM
+        </div>
+
+        <div style="margin: 2mm 0; display: flex; justify-content: center; gap: 6mm;">
+          <div style="border: 0.6pt solid #D4AF65; background: rgba(255, 255, 255, 0.7); border-radius: 2mm; padding: 2mm 3.5mm;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 9.5pt; font-weight: 700; color: #641B2E;">
+              Pandit Ramgopal Vajpayee
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 6.8pt; color: #8C6A28; margin-top: 0.5mm;">
+              Ph: +91 9782715591
+            </div>
+          </div>
+
+          <div style="border: 0.6pt solid #D4AF65; background: rgba(255, 255, 255, 0.7); border-radius: 2mm; padding: 2mm 3.5mm;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 9.5pt; font-weight: 700; color: #641B2E;">
+              Pandit Lokesh Vajpayee
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 6.8pt; color: #8C6A28; margin-top: 0.5mm;">
+              Ph: +91 9024538960
+            </div>
+          </div>
+        </div>
+
+        <div class="body-invitation" style="margin: 0 auto; font-size: 7.8pt;">
+          "We eagerly await the honour of your gracious presence to bless the newlyweds as they embark on this sacred lifelong journey of love and togetherness."
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       PAGE 4: ROYAL REPLY / BLESSINGS CARD
+       ========================================== -->
+  <section class="pdf-page" id="page-4">
+    <div class="bg-gradient-tint"></div>
+    <div class="page-frame-outer"></div>
+    <div class="page-frame-inner"></div>
+
+    <!-- Decorative Corner SVGs -->
+    <svg class="corner-ornament corner-tl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-tr" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-bl" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+    <svg class="corner-ornament corner-br" viewBox="0 0 50 50">
+      <path d="M 0,0 L 50,0 C 35,0 20,5 15,15 C 5,20 0,35 0,50 Z" fill="rgba(212, 175, 101, 0.2)" />
+      <path d="M 5,5 L 35,5 C 25,5 15,10 10,15 C 10,25 5,35 5,35" fill="none" stroke="#D4AF65" stroke-width="1.2" />
+      <circle cx="12" cy="12" r="2.5" fill="#D4AF65" />
+    </svg>
+
+    <div class="content-box">
+      <!-- Header -->
+      <div>
+        <div style="font-family: 'Cinzel', serif; font-size: 7.5pt; font-weight: 600; color: #8C6A28; letter-spacing: 2px;">
+          ROYAL RESPONSE &amp; BLESSINGS
+        </div>
+        <div class="title-royal" style="font-size: 10.5pt; margin-top: 0.8mm; line-height: 1.3;">
+          YOUR PRESENCE &amp; BLESSINGS ARE CORDIALLY INVITED
+        </div>
+        <div class="subtitle-script" style="font-size: 11pt; margin-top: 0.5mm;">
+          Teena &amp; Kuldeep
+        </div>
+        <div style="font-family: 'Montserrat', sans-serif; font-size: 6.8pt; color: #555; margin-top: 0.5mm;">
+          "Your Presence Is Our Greatest Gift. Your Blessings Are Our Greatest Treasure."
+        </div>
+      </div>
+
+      <div class="gold-divider">
+        <div class="line"></div>
+        <div class="diamond">&#10022;</div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Blank Decorative Lines for Handwritten Guest Details / Wishes -->
+      <div class="rsvp-form-container">
+        <div class="rsvp-field-line">
+          <span class="rsvp-field-label">Guest Name(s):</span>
+          <div class="rsvp-blank-fill"></div>
+        </div>
+
+        <div class="rsvp-field-line">
+          <span class="rsvp-field-label">Number of Attending Guests:</span>
+          <div class="rsvp-blank-fill"></div>
+        </div>
+
+        <div class="rsvp-field-line">
+          <span class="rsvp-field-label">From (City / Family):</span>
+          <div class="rsvp-blank-fill"></div>
+        </div>
+
+        <div style="margin-top: 1.5mm;">
+          <span class="rsvp-field-label">Heartfelt Blessings &amp; Wishes for the Couple:</span>
+          <div class="rsvp-wishes-lines">
+            <div class="rsvp-wish-line"></div>
+            <div class="rsvp-wish-line"></div>
+            <div class="rsvp-wish-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thank You Message -->
+      <div style="margin: 1.5mm 0;">
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: #641B2E;">
+          With Love and Warm Regards,
+        </div>
+        <div style="font-family: 'Cinzel', serif; font-weight: 700; font-size: 8.5pt; color: #8C6A28; letter-spacing: 1.5px; margin-top: 0.5mm;">
+          VAJPAYEE &amp; UPADHYAY FAMILIES
+        </div>
+      </div>
+
+      <!-- Discrete Printing / Designer Details Section -->
+      <div class="printer-credit-footer">
+        <div class="printer-credit-company">AMBIKA MARBLE MURTI ART</div>
+        <div>Plot No. 12, Mahaveer Colony, 2nd, Kartarpura, Jaipur – 302006, Rajasthan.</div>
+        <div>Contact: +91 9024538960 / +91 9887666339</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

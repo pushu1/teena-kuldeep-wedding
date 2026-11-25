@@ -93,22 +93,58 @@ export default function MandapHero({ onScrollClick }) {
         {/* Subtle Atmospheric Mist & Floral Petal Drift at Mandap Threshold */}
         <div className="mandap-threshold-blend"></div>
 
-        {/* Animated Bouncing Scroll Indicator in Center Aisle */}
-        <button
-          className="mandap-scroll-indicator"
-          onClick={onScrollClick}
-          aria-label="Scroll to read wedding invitation"
-        >
-          <div className="scroll-mouse-pill">
-            <span className="scroll-wheel-dot"></span>
-          </div>
-          <span className="scroll-cta-text">Scroll to Enter</span>
-          <div className="scroll-bouncing-chevron">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
+        {/* The Two Royal Circular Action Buttons Side-by-Side */}
+        <div className="hero-circular-buttons-row">
+          {/* Button A: INVITATION BUTTON (CLICK HERE) */}
+          <button
+            className="royal-circle-action-btn btn-invitation"
+            onClick={onScrollClick}
+            aria-label="Click here to open royal wedding invitation"
+            title="Click here to enter and view wedding ceremonies"
+          >
+            <div className="circle-glow-halo"></div>
+            <div className="circle-rotating-ring">
+              <svg viewBox="0 0 100 100" className="rotating-ring-svg" aria-hidden="true">
+                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
+                <circle cx="50" cy="50" r="41" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+              </svg>
+            </div>
+            <div className="circle-bevel-border"></div>
+            <div className="circle-core-teal">
+              <span className="circle-jewel-star top">✦</span>
+              <span className="circle-btn-text main">CLICK</span>
+              <span className="circle-btn-text sub">HERE</span>
+              <span className="circle-jewel-star bottom">✦</span>
+            </div>
+            <span className="circle-btn-label">Open Invitation</span>
+          </button>
+
+          {/* Button B: VENUE BUTTON (VIEW VENUE) */}
+          <a
+            href="https://maps.app.goo.gl/hPi6DXWJZEpUG5Vm9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="royal-circle-action-btn btn-venue"
+            aria-label="View Venue on Google Maps"
+            title="Open Google Maps navigation to Jain Bagbera Dadawadi"
+          >
+            <div className="circle-glow-halo"></div>
+            <div className="circle-rotating-ring">
+              <svg viewBox="0 0 100 100" className="rotating-ring-svg" aria-hidden="true">
+                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
+                <circle cx="50" cy="50" r="41" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+              </svg>
+            </div>
+            <div className="circle-bevel-border"></div>
+            <div className="circle-core-teal">
+              <span className="circle-pin-icon">📍</span>
+              <span className="circle-btn-text main">VIEW</span>
+              <span className="circle-btn-text sub">VENUE</span>
+              <span className="circle-jewel-star bottom">✦</span>
+            </div>
+            <span className="circle-btn-label">Google Maps</span>
+          </a>
+        </div>
       </div>
     </section>
   );
