@@ -57,13 +57,13 @@ export default function GroomFamilySection() {
               <div className="relationship-heading">SON OF</div>
 
               <div className="profile-lineage-block">
-                <p className="parent-name">Late Mrs. Pepi Devi</p>
+                <p className="parent-name">Mrs. Chanda Devi</p>
                 <span className="parent-connector">and</span>
-                <p className="parent-name prominent-father">Late Mr. Champalal Ji Upadhyay</p>
+                <p className="parent-name prominent-father">Mr. Jasraj Ji Upadhyay</p>
                 
                 <div className="grandparents-sublineage">
                   <span className="grandparent-label">GRANDSON OF</span>
-                  <p className="grandparent-names">Mrs. Chanda Devi &amp; Mr. Jasraj Ji Upadhyay</p>
+                  <p className="grandparent-names">Late Mrs. Pepi Devi &amp; Late Mr. Champalal Ji Upadhyay</p>
                 </div>
               </div>
 

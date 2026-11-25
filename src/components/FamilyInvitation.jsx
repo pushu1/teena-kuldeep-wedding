@@ -19,7 +19,7 @@ export default function FamilyInvitation() {
         </h2>
 
         <p className="formal-hosts-title">
-          <strong>Smt. Chandra Devi</strong> &amp; <strong>Shri Jasrajji Upadhyay</strong>
+          <strong>Mrs. Chanda Devi</strong> &amp; <strong>Mr. Jasraj Ji Upadhyay</strong>
         </p>
 
         <p className="formal-invitation-lead">

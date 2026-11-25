@@ -277,10 +277,37 @@ def run_tests():
         assert "CHAMPALAL" in dom_text.upper(), "ERROR: Champalal missing in live website text!"
         assert "PEPI DEVI" in dom_text.upper(), "ERROR: Late Mrs. Pepi Devi missing in live website text!"
         assert "JASRAJ" in dom_text.upper(), "ERROR: Jasraj Ji Upadhyay missing in live website text!"
+        assert "CHANDA DEVI" in dom_text.upper(), "ERROR: Chanda Devi missing in live website text!"
         assert "ADIGAUD" in dom_text.upper(), "ERROR: ADIGAUD venue missing in live website text!"
         assert "MAHESH NAGAR" in dom_text.upper(), "ERROR: MAHESH NAGAR missing in live website text!"
         assert "ADINATH" not in dom_text.upper(), "ERROR: ADINATH found in live website text!"
-        print("DOM Content Check PASSED: TEENA & KULDEEP with Mrs. Manju Devi & Late Mr. Champalal Ji Upadhyay verified!")
+        
+        # Verify Groom Specific Lineage Hierarchy in Section
+        groom_lineage_eval = cdp.send("Runtime.evaluate", {
+            "expression": """(() => {
+                const groomSec = document.getElementById('groom-section');
+                const relHeading = groomSec.querySelector('.relationship-heading')?.innerText || '';
+                const parentNames = Array.from(groomSec.querySelectorAll('.profile-lineage-block > .parent-name')).map(el => el.innerText).join(' ');
+                const gpLabel = groomSec.querySelector('.grandparent-label')?.innerText || '';
+                const gpNames = groomSec.querySelector('.grandparent-names')?.innerText || '';
+                return {
+                    relHeading,
+                    parentNames,
+                    gpLabel,
+                    gpNames
+                };
+            })()""",
+            "returnByValue": True
+        })
+        gl = groom_lineage_eval.get('result', {}).get('result', {}).get('value', {})
+        print(f"Groom Lineage Audit: {gl}")
+        assert "SON OF" in gl.get('relHeading', '').upper(), f"Missing SON OF heading: {gl}"
+        assert "CHANDA DEVI" in gl.get('parentNames', '').upper(), f"Chanda Devi missing from parents: {gl}"
+        assert "JASRAJ" in gl.get('parentNames', '').upper(), f"Jasraj Ji missing from parents: {gl}"
+        assert "GRANDSON OF" in gl.get('gpLabel', '').upper(), f"Missing GRANDSON OF label: {gl}"
+        assert "PEPI DEVI" in gl.get('gpNames', '').upper(), f"Pepi Devi missing from grandparents: {gl}"
+        assert "CHAMPALAL" in gl.get('gpNames', '').upper(), f"Champalal missing from grandparents: {gl}"
+        print("Groom Lineage Hierarchy PASSED: SON OF (Mrs. Chanda Devi & Mr. Jasraj Ji Upadhyay) and GRANDSON OF (Late Mrs. Pepi Devi & Late Mr. Champalal Ji Upadhyay) verified!")
 
         # ----------------------------------------------------
         # TEST 5: FULL-SCREEN CARD VIEWER MODAL

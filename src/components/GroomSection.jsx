@@ -22,15 +22,12 @@ export default function GroomSection() {
           <h3 className="person-name">Chiranjeev Kuldeep</h3>
           
           <p className="person-parentage">
-            Beloved Son of <strong>Smt. Chandra Devi</strong> &amp; <strong>Shri Jasrajji Upadhyay</strong>
+            Beloved Son of <strong>Mrs. Chanda Devi</strong> &amp; <strong>Mr. Jasraj Ji Upadhyay</strong>
           </p>
 
           <div className="person-ancestral-line">
             <p className="ancestor-text">
-              Great-grandson of Late Smt. Jamna Devi &amp; Late Shri Harchandji Upadhyay
-            </p>
-            <p className="ancestor-text">
-              Grandson of Late Smt. Pepi Devi &amp; Late Shri Champalalji Upadhyay
+              Grandson of Late Mrs. Pepi Devi &amp; Late Mr. Champalal Ji Upadhyay
             </p>
           </div>
 
