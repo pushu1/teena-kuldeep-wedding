@@ -198,9 +198,43 @@ def run_tests():
         screenshot(cdp, "royal_04_desktop_hero_revealed.png")
 
         # ----------------------------------------------------
-        # TEST 4: SCROLL MAIN SECTIONS ON DESKTOP
+        # TEST 4: HERO SECTION NO BUTTONS & MAIN SECTIONS INSPECTION
         # ----------------------------------------------------
-        print("\n--- TEST 4: Main Sections Inspection ---")
+        print("\n--- TEST 4: Main Sections & Hero Inspection ---")
+
+        # Verify that the 4 top action buttons and their container are completely gone from hero
+        hero_check = cdp.send("Runtime.evaluate", {
+            "expression": """(() => {
+                const hero = document.getElementById('hero-section');
+                const btnGroup = hero.querySelector('.hero-cta-button-group');
+                const viewCardBtn = hero.querySelector('.btn-view-card');
+                const downloadBtn = hero.querySelector('.btn-download-pdf');
+                const itineraryBtn = hero.querySelector('.btn-secondary-itinerary');
+                const venueBtn = hero.querySelector('.btn-secondary-venue');
+                const heroText = hero.innerText;
+                return {
+                    hasGroup: !!btnGroup,
+                    hasViewCard: !!viewCardBtn,
+                    hasDownload: !!downloadBtn,
+                    hasItinerary: !!itineraryBtn,
+                    hasVenue: !!venueBtn,
+                    hasTeena: heroText.includes('TEENA'),
+                    hasKuldeep: heroText.includes('KULDEEP'),
+                    hasDate: heroText.includes('11 DECEMBER 2026')
+                };
+            })()""",
+            "returnByValue": True
+        })
+        hc = hero_check.get('result', {}).get('result', {}).get('value', {})
+        print(f"Hero Section Button Audit: {hc}")
+        assert not hc.get('hasGroup'), "ERROR: .hero-cta-button-group still exists in hero!"
+        assert not hc.get('hasViewCard'), "ERROR: View Card button still exists in hero!"
+        assert not hc.get('hasDownload'), "ERROR: Download button still exists in hero!"
+        assert not hc.get('hasItinerary'), "ERROR: Itinerary button still exists in hero!"
+        assert not hc.get('hasVenue'), "ERROR: Venue button still exists in hero!"
+        assert hc.get('hasTeena') and hc.get('hasKuldeep'), "ERROR: Teena & Kuldeep missing from hero!"
+        print("Hero Action Buttons Container successfully and completely removed!")
+
         cdp.send("Runtime.evaluate", {"expression": "document.getElementById('bride-section').scrollIntoView()"})
         time.sleep(0.8)
         screenshot(cdp, "royal_05_desktop_bride_family_section.png")
@@ -265,15 +299,15 @@ def run_tests():
         time.sleep(0.5)
 
         # ----------------------------------------------------
-        # TEST 6: VERIFY DOWNLOAD LINK AND RESOLUTION
+        # TEST 6: VERIFY DOWNLOAD LINK IN NAV AND FOOTER
         # ----------------------------------------------------
         print("\n--- TEST 6: PDF Download Link Verification ---")
         dl_eval = cdp.send("Runtime.evaluate", {
-            "expression": "document.querySelector('.btn-download-pdf').getAttribute('href')",
+            "expression": "document.querySelector('.btn-download-pdf-footer').getAttribute('href')",
             "returnByValue": True
         })
         dl_href = dl_eval.get('result', {}).get('result', {}).get('value', '')
-        print(f"Hero Download Button Href: {dl_href}")
+        print(f"Footer Download Button Href: {dl_href}")
         assert "Teena_Kuldeep" in dl_href and dl_href.endswith(".pdf"), f"Unexpected download link: {dl_href}"
 
         # Test downloading via HTTP server
@@ -333,8 +367,8 @@ def run_tests():
             "mobile": True
         })
         time.sleep(0.5)
-        cdp.send("Runtime.evaluate", {"expression": "window.scrollTo(0, 0)"})
-        time.sleep(0.6)
+        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('hero-section').scrollIntoView({ behavior: 'instant' }); window.scrollTo(0, 0);"})
+        time.sleep(1.0)
         screenshot(cdp, "royal_13_mobile_hero_view.png")
 
         cdp.send("Runtime.evaluate", {"expression": "document.getElementById('bride-section').scrollIntoView()"})

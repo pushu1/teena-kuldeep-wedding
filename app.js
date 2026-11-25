@@ -35,14 +35,14 @@ var RoyalWeddingApp = (() => {
     mod
   ));
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/main.jsx
+  // src/main.jsx
   var import_react14 = __toESM(__require("react"));
   var import_client = __toESM(__require("react-dom/client"));
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/App.jsx
+  // src/App.jsx
   var import_react13 = __toESM(__require("react"));
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/CinematicEnvelopeOpening.jsx
+  // src/components/CinematicEnvelopeOpening.jsx
   var import_react = __toESM(__require("react"));
   function CinematicEnvelopeOpening({ onOpenComplete, onToggleMusic, isMuted }) {
     const [stage, setStage] = (0, import_react.useState)("closed");
@@ -316,7 +316,7 @@ var RoyalWeddingApp = (() => {
     )))), /* @__PURE__ */ import_react.default.createElement("div", { className: "opening-bottom-hint" }, /* @__PURE__ */ import_react.default.createElement("span", null, "Tap to unveil the sacred celebration \u2022 11.12.2026")));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/WeddingHero.jsx
+  // src/components/WeddingHero.jsx
   var import_react2 = __toESM(__require("react"));
   function WeddingHero({ onOpenCardViewer, onDownloadPDF }) {
     const scrollToSection = (id) => {
@@ -346,45 +346,7 @@ var RoyalWeddingApp = (() => {
         alt: "Lord Ganesha",
         className: "hero-ganesha-img"
       }
-    )), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-shloka-text" }, "|| SHREE GANESHAY NAMAH ||"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-shubh-vivah" }, "Auspicious Wedding Celebration")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-royal-badge" }, /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-flourish" }, "\u2726"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-text" }, "THE ROYAL WEDDING CELEBRATION"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-flourish" }, "\u2726")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-names-display" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "hero-name-primary" }, "TEENA"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-ampersand-wrapper" }, /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-line" }), /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-symbol" }, "&"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-line" })), /* @__PURE__ */ import_react2.default.createElement("h1", { className: "hero-name-primary" }, "KULDEEP")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-date-badge" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-icon" }, "\u2726"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-main" }, "FRIDAY | 11 DECEMBER 2026"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-icon" }, "\u2726")), /* @__PURE__ */ import_react2.default.createElement("p", { className: "hero-journey-quote" }, "\u201CTwo Hearts, One Beautiful Journey\u201D"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-cta-button-group" }, /* @__PURE__ */ import_react2.default.createElement(
-      "button",
-      {
-        className: "hero-btn btn-view-card",
-        onClick: onOpenCardViewer,
-        "aria-label": "View interactive wedding invitation card"
-      },
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-icon" }, "\u{1F4DC}"),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-text" }, "VIEW WEDDING CARD")
-    ), /* @__PURE__ */ import_react2.default.createElement(
-      "a",
-      {
-        href: "Teena_Kuldeep_New_Royal_Digital_Invitation.pdf",
-        download: "Teena_Kuldeep_New_Royal_Digital_Invitation.pdf",
-        className: "hero-btn btn-download-pdf",
-        onClick: onDownloadPDF,
-        "aria-label": "Download official royal wedding invitation PDF"
-      },
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-icon" }, "\u{1F4E5}"),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-text" }, "DOWNLOAD PDF")
-    ), /* @__PURE__ */ import_react2.default.createElement(
-      "button",
-      {
-        className: "hero-btn btn-secondary-itinerary",
-        onClick: () => scrollToSection("events-section"),
-        "aria-label": "Jump to event schedule"
-      },
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-icon" }, "\u{1F5D3}\uFE0F"),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-text" }, "ITINERARY")
-    ), /* @__PURE__ */ import_react2.default.createElement(
-      "button",
-      {
-        className: "hero-btn btn-secondary-venue",
-        onClick: () => scrollToSection("venue-section"),
-        "aria-label": "Jump to venue directions"
-      },
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-icon" }, "\u{1F4CD}"),
-      /* @__PURE__ */ import_react2.default.createElement("span", { className: "btn-text" }, "VENUE")
-    )), /* @__PURE__ */ import_react2.default.createElement(
+    )), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-shloka-text" }, "|| SHREE GANESHAY NAMAH ||"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-shubh-vivah" }, "Auspicious Wedding Celebration")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-royal-badge" }, /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-flourish" }, "\u2726"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-text" }, "THE ROYAL WEDDING CELEBRATION"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "badge-flourish" }, "\u2726")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-names-display" }, /* @__PURE__ */ import_react2.default.createElement("h1", { className: "hero-name-primary" }, "TEENA"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-ampersand-wrapper" }, /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-line" }), /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-symbol" }, "&"), /* @__PURE__ */ import_react2.default.createElement("span", { className: "ampersand-line" })), /* @__PURE__ */ import_react2.default.createElement("h1", { className: "hero-name-primary" }, "KULDEEP")), /* @__PURE__ */ import_react2.default.createElement("div", { className: "hero-date-badge" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-icon" }, "\u2726"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-main" }, "FRIDAY | 11 DECEMBER 2026"), /* @__PURE__ */ import_react2.default.createElement("div", { className: "date-icon" }, "\u2726")), /* @__PURE__ */ import_react2.default.createElement("p", { className: "hero-journey-quote" }, "\u201CTwo Hearts, One Beautiful Journey\u201D"), /* @__PURE__ */ import_react2.default.createElement(
       "div",
       {
         className: "hero-scroll-indicator",
@@ -398,19 +360,19 @@ var RoyalWeddingApp = (() => {
     )));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/BrideFamilySection.jsx
+  // src/components/BrideFamilySection.jsx
   var import_react3 = __toESM(__require("react"));
   function BrideFamilySection() {
     return /* @__PURE__ */ import_react3.default.createElement("section", { className: "wedding-section bride-family-section", id: "bride-section" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "section-royal-card" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "card-border-gold-outer" }), /* @__PURE__ */ import_react3.default.createElement("div", { className: "card-border-gold-inner" }), /* @__PURE__ */ import_react3.default.createElement("div", { className: "section-header-flourish" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "shloka-text" }, "|| \u0935\u0927\u0941 \u092A\u0915\u094D\u0937 \u2022 \u091C\u092F\u092A\u0941\u0930 ||"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "family-origin-pill" }, "THE RESPECTED VAJPAYEE FAMILY OF JAIPUR"), /* @__PURE__ */ import_react3.default.createElement("h2", { className: "section-title-gold" }, "THE BRIDE'S FAMILY"), /* @__PURE__ */ import_react3.default.createElement("p", { className: "section-subtitle-script" }, "Welcoming you with heartfelt warmth & traditional Rajasthani hospitality"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "section-title-divider" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "divider-line" }), /* @__PURE__ */ import_react3.default.createElement("span", { className: "divider-star" }, "\u2726"), /* @__PURE__ */ import_react3.default.createElement("span", { className: "divider-line" }))), /* @__PURE__ */ import_react3.default.createElement("div", { className: "family-showcase-container" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "couple-profile-card bride-card prominent-family-card" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "profile-frame-jharokha" }, /* @__PURE__ */ import_react3.default.createElement("div", { className: "avatar-art-container" }, /* @__PURE__ */ import_react3.default.createElement("svg", { viewBox: "0 0 140 140", className: "avatar-silhouette-svg" }, /* @__PURE__ */ import_react3.default.createElement("circle", { cx: "70", cy: "70", r: "65", fill: "#641B2E", stroke: "#D4AF65", strokeWidth: "2" }), /* @__PURE__ */ import_react3.default.createElement("circle", { cx: "70", cy: "70", r: "60", fill: "none", stroke: "rgba(212, 175, 101, 0.4)", strokeWidth: "1", strokeDasharray: "3 3" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M70 30 C58 30 50 38 50 50 C50 62 58 68 70 68 C82 68 90 62 90 50 C90 38 82 30 70 30 Z", fill: "#E8D5A3" }), /* @__PURE__ */ import_react3.default.createElement("circle", { cx: "70", cy: "38", r: "3", fill: "#D4AF65" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M70 30 L70 38", stroke: "#D4AF65", strokeWidth: "1.5" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M44 48 C40 65 32 90 28 115 C52 118 88 118 112 115 C108 90 100 65 96 48 C92 42 85 36 70 36 C55 36 48 42 44 48 Z", fill: "#3B101C", stroke: "#D4AF65", strokeWidth: "1.2", opacity: "0.9" }), /* @__PURE__ */ import_react3.default.createElement("circle", { cx: "63", cy: "54", r: "3", fill: "none", stroke: "#D4AF65", strokeWidth: "1" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M63 54 Q56 50 52 46", fill: "none", stroke: "#D4AF65", strokeWidth: "0.8" }), /* @__PURE__ */ import_react3.default.createElement("path", { d: "M48 85 L70 95 L92 85 L96 115 L44 115 Z", fill: "#8C1D40" }))), /* @__PURE__ */ import_react3.default.createElement("div", { className: "profile-role-badge" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "role-tag" }, "THE BRIDE"))), /* @__PURE__ */ import_react3.default.createElement("div", { className: "profile-details-content" }, /* @__PURE__ */ import_react3.default.createElement("h3", { className: "profile-name" }, "TEENA"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "relationship-heading" }, "DAUGHTER OF"), /* @__PURE__ */ import_react3.default.createElement("div", { className: "profile-lineage-block" }, /* @__PURE__ */ import_react3.default.createElement("p", { className: "parent-name" }, "Mrs. Manju Devi"), /* @__PURE__ */ import_react3.default.createElement("span", { className: "parent-connector" }, "and"), /* @__PURE__ */ import_react3.default.createElement("p", { className: "parent-name prominent-father" }, "Mr. Ramgopal Vajpayee")), /* @__PURE__ */ import_react3.default.createElement("div", { className: "profile-location-tag" }, /* @__PURE__ */ import_react3.default.createElement("span", { className: "loc-icon" }, "\u{1F4CD}"), /* @__PURE__ */ import_react3.default.createElement("span", null, "Jaipur, Rajasthan, India")), /* @__PURE__ */ import_react3.default.createElement("div", { className: "family-welcome-note" }, /* @__PURE__ */ import_react3.default.createElement("p", { className: "note-text" }, "\u201CThe Vajpayee family of Jaipur cordially invites you to grace the auspicious wedding celebration of our beloved daughter Teena with Kuldeep.\u201D")))))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/GroomFamilySection.jsx
+  // src/components/GroomFamilySection.jsx
   var import_react4 = __toESM(__require("react"));
   function GroomFamilySection() {
     return /* @__PURE__ */ import_react4.default.createElement("section", { className: "wedding-section groom-family-section", id: "groom-section" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "section-royal-card" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "card-border-gold-outer" }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "card-border-gold-inner" }), /* @__PURE__ */ import_react4.default.createElement("div", { className: "section-header-flourish" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "shloka-text" }, "|| \u0935\u0930 \u092A\u0915\u094D\u0937 \u2022 \u092A\u093E\u0932\u0940 ||"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "family-origin-pill" }, "THE ESTEEMED UPADHYAY FAMILY OF PALI"), /* @__PURE__ */ import_react4.default.createElement("h2", { className: "section-title-gold" }, "THE GROOM'S FAMILY"), /* @__PURE__ */ import_react4.default.createElement("p", { className: "section-subtitle-script" }, "With the divine blessings of beloved ancestral elders"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "section-title-divider" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "divider-line" }), /* @__PURE__ */ import_react4.default.createElement("span", { className: "divider-star" }, "\u2726"), /* @__PURE__ */ import_react4.default.createElement("span", { className: "divider-line" }))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "family-showcase-container" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "couple-profile-card groom-card prominent-family-card" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-frame-jharokha" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "avatar-art-container" }, /* @__PURE__ */ import_react4.default.createElement("svg", { viewBox: "0 0 140 140", className: "avatar-silhouette-svg" }, /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "70", r: "65", fill: "#3B101C", stroke: "#D4AF65", strokeWidth: "2" }), /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "70", r: "60", fill: "none", stroke: "rgba(212, 175, 101, 0.4)", strokeWidth: "1", strokeDasharray: "3 3" }), /* @__PURE__ */ import_react4.default.createElement("path", { d: "M70 38 C60 38 52 46 52 56 C52 66 60 72 70 72 C80 72 88 66 88 56 C88 46 80 38 70 38 Z", fill: "#E8D5A3" }), /* @__PURE__ */ import_react4.default.createElement("path", { d: "M46 44 C46 30 60 22 70 22 C80 22 94 30 94 44 C92 48 85 52 70 52 C55 52 48 48 46 44 Z", fill: "#D4AF65", stroke: "#8C6A28", strokeWidth: "1" }), /* @__PURE__ */ import_react4.default.createElement("path", { d: "M70 12 Q75 18 70 24 Q65 18 70 12 Z", fill: "#FFF9ED", stroke: "#D4AF65", strokeWidth: "1" }), /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "24", r: "3", fill: "#8C1D40" }), /* @__PURE__ */ import_react4.default.createElement("path", { d: "M42 80 L70 90 L98 80 L102 118 L38 118 Z", fill: "#641B2E", stroke: "#D4AF65", strokeWidth: "1.2" }), /* @__PURE__ */ import_react4.default.createElement("line", { x1: "70", y1: "90", x2: "70", y2: "118", stroke: "#D4AF65", strokeWidth: "1.5" }), /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "95", r: "1.5", fill: "#FFF9ED" }), /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "103", r: "1.5", fill: "#FFF9ED" }), /* @__PURE__ */ import_react4.default.createElement("circle", { cx: "70", cy: "111", r: "1.5", fill: "#FFF9ED" }))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-role-badge" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "role-tag" }, "THE GROOM"))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-details-content" }, /* @__PURE__ */ import_react4.default.createElement("h3", { className: "profile-name" }, "KULDEEP"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "relationship-heading" }, "SON OF"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-lineage-block" }, /* @__PURE__ */ import_react4.default.createElement("p", { className: "parent-name" }, "Late Mrs. Pepi Devi"), /* @__PURE__ */ import_react4.default.createElement("span", { className: "parent-connector" }, "and"), /* @__PURE__ */ import_react4.default.createElement("p", { className: "parent-name prominent-father" }, "Late Mr. Champalal Ji Upadhyay"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "grandparents-sublineage" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "grandparent-label" }, "GRANDSON OF"), /* @__PURE__ */ import_react4.default.createElement("p", { className: "grandparent-names" }, "Mrs. Chanda Devi & Mr. Jasraj Ji Upadhyay"))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "profile-location-tag" }, /* @__PURE__ */ import_react4.default.createElement("span", { className: "loc-icon" }, "\u{1F4CD}"), /* @__PURE__ */ import_react4.default.createElement("span", null, "Pali, Rajasthan, India")))))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/WeddingTimeline.jsx
+  // src/components/WeddingTimeline.jsx
   var import_react5 = __toESM(__require("react"));
   function WeddingTimeline() {
     const [activeDay, setActiveDay] = (0, import_react5.useState)("all");
@@ -519,7 +481,7 @@ var RoyalWeddingApp = (() => {
     )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "day-events-vertical-list" }, day2Events.map((evt, idx) => /* @__PURE__ */ import_react5.default.createElement("div", { className: "timeline-event-item", key: idx }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "event-marker-node" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "marker-icon" }, evt.icon), idx < day2Events.length - 1 && /* @__PURE__ */ import_react5.default.createElement("span", { className: "vertical-timeline-spine" })), /* @__PURE__ */ import_react5.default.createElement("div", { className: "event-content-box" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "event-top-row" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "event-index-badge" }, evt.num), /* @__PURE__ */ import_react5.default.createElement("h4", { className: "event-title" }, evt.title)), /* @__PURE__ */ import_react5.default.createElement("div", { className: "event-time-badge highlight-wedding-time" }, /* @__PURE__ */ import_react5.default.createElement("span", { className: "time-clock-icon" }, "\u23F0"), /* @__PURE__ */ import_react5.default.createElement("span", { className: "time-val" }, evt.time)), /* @__PURE__ */ import_react5.default.createElement("p", { className: "event-description" }, evt.desc)))))))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/VenueSection.jsx
+  // src/components/VenueSection.jsx
   var import_react6 = __toESM(__require("react"));
   function VenueSection() {
     const [copied, setCopied] = (0, import_react6.useState)(false);
@@ -581,7 +543,7 @@ var RoyalWeddingApp = (() => {
     ))))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/CountdownSection.jsx
+  // src/components/CountdownSection.jsx
   var import_react7 = __toESM(__require("react"));
   function CountdownSection() {
     const targetDate = (/* @__PURE__ */ new Date("2026-12-11T18:00:00+05:30")).getTime();
@@ -625,7 +587,7 @@ var RoyalWeddingApp = (() => {
     return /* @__PURE__ */ import_react7.default.createElement("section", { className: "wedding-section countdown-timer-section", id: "countdown-section" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "section-royal-card" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "card-border-gold-outer" }), /* @__PURE__ */ import_react7.default.createElement("div", { className: "card-border-gold-inner" }), /* @__PURE__ */ import_react7.default.createElement("div", { className: "section-header-flourish" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "shloka-text" }, "|| \u092E\u0902\u0917\u0932 \u0918\u095C\u0940 \u0915\u0940 \u092A\u094D\u0930\u0924\u0940\u0915\u094D\u0937\u093E ||"), /* @__PURE__ */ import_react7.default.createElement("h2", { className: "section-title-gold" }, "WEDDING COUNTDOWN"), /* @__PURE__ */ import_react7.default.createElement("p", { className: "section-subtitle-script" }, "Counting every sacred moment until two souls unite"), /* @__PURE__ */ import_react7.default.createElement("div", { className: "section-title-divider" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "divider-line" }), /* @__PURE__ */ import_react7.default.createElement("span", { className: "divider-star" }, "\u2726"), /* @__PURE__ */ import_react7.default.createElement("span", { className: "divider-line" }))), timeLeft.isCompleted ? /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-completed-banner" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "completed-sparkles" }, "\u{1F389} \u{1F38A} \u2728"), /* @__PURE__ */ import_react7.default.createElement("h3", { className: "completed-title" }, "The Auspicious Wedding Day Is Here!"), /* @__PURE__ */ import_react7.default.createElement("p", { className: "completed-subtitle" }, "Celebrating the eternal union of Teena & Kuldeep with blessings and love.")) : /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-grid-container" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-unit-box" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-circle-badge" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-number" }, String(timeLeft.days).padStart(2, "0"))), /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-label" }, "DAYS")), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-colon" }, ":"), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-unit-box" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-circle-badge" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-number" }, String(timeLeft.hours).padStart(2, "0"))), /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-label" }, "HOURS")), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-colon" }, ":"), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-unit-box" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-circle-badge" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-number" }, String(timeLeft.minutes).padStart(2, "0"))), /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-label" }, "MINUTES")), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-colon" }, ":"), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-unit-box" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-circle-badge seconds-pulse" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-number" }, String(timeLeft.seconds).padStart(2, "0"))), /* @__PURE__ */ import_react7.default.createElement("span", { className: "unit-label" }, "SECONDS"))), /* @__PURE__ */ import_react7.default.createElement("div", { className: "countdown-muhurat-strip" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "muhurat-star" }, "\u2726"), /* @__PURE__ */ import_react7.default.createElement("span", { className: "muhurat-text" }, "Auspicious Wedding Muhurat \u2022 Friday, 11 December 2026 \u2022 Jaipur, Rajasthan"), /* @__PURE__ */ import_react7.default.createElement("span", { className: "muhurat-star" }, "\u2726"))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/FamilyBlessingsSection.jsx
+  // src/components/FamilyBlessingsSection.jsx
   var import_react8 = __toESM(__require("react"));
   function FamilyBlessingsSection() {
     const [guestName, setGuestName] = (0, import_react8.useState)("");
@@ -714,7 +676,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     )), sentSuccess && /* @__PURE__ */ import_react8.default.createElement("div", { className: "blessing-sent-notification" }, "\u2713 Opening WhatsApp to deliver your royal blessings!")))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/FinalBlessingsFooter.jsx
+  // src/components/FinalBlessingsFooter.jsx
   var import_react9 = __toESM(__require("react"));
   function FinalBlessingsFooter({ onOpenCardViewer, onDownloadPDF }) {
     const scrollToTop = () => {
@@ -759,7 +721,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-bottom-divider" }), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-sub-bar" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "sub-bar-text" }, "The Royal Wedding Celebration 2026 \u2022 Teena & Kuldeep \u2022 Jaipur, Rajasthan"))));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/InvitationViewerModal.jsx
+  // src/components/InvitationViewerModal.jsx
   var import_react10 = __toESM(__require("react"));
   function InvitationViewerModal({ isOpen, onClose }) {
     const [zoomLevel, setZoomLevel] = (0, import_react10.useState)(1);
@@ -922,7 +884,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     ));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/MusicPlayer.jsx
+  // src/components/MusicPlayer.jsx
   var import_react11 = __toESM(__require("react"));
   function MusicPlayer({ audioSrc = "assets/wedding_bgm.mp3" }) {
     const [isPlaying, setIsPlaying] = (0, import_react11.useState)(false);
@@ -965,7 +927,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     )));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/components/PetalsCanvas.jsx
+  // src/components/PetalsCanvas.jsx
   var import_react12 = __toESM(__require("react"));
   function PetalsCanvas() {
     const canvasRef = (0, import_react12.useRef)(null);
@@ -1051,7 +1013,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     return /* @__PURE__ */ import_react12.default.createElement("canvas", { ref: canvasRef, className: "petals-ambient-canvas", "aria-hidden": "true" });
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/App.jsx
+  // src/App.jsx
   function App() {
     const [hasOpenedEnvelope, setHasOpenedEnvelope] = (0, import_react13.useState)(false);
     const [isViewerOpen, setIsViewerOpen] = (0, import_react13.useState)(false);
@@ -1122,7 +1084,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
     ));
   }
 
-  // ../../../../.gemini/antigravity/scratch/param-pummy-wedding/src/main.jsx
+  // src/main.jsx
   var rootElement = document.getElementById("root");
   if (rootElement) {
     const root = import_client.default.createRoot(rootElement);

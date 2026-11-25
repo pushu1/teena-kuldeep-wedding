@@ -78,47 +78,6 @@ export default function WeddingHero({ onOpenCardViewer, onDownloadPDF }) {
           “Two Hearts, One Beautiful Journey”
         </p>
 
-        {/* Interactive Action Hub */}
-        <div className="hero-cta-button-group">
-          <button
-            className="hero-btn btn-view-card"
-            onClick={onOpenCardViewer}
-            aria-label="View interactive wedding invitation card"
-          >
-            <span className="btn-icon">📜</span>
-            <span className="btn-text">VIEW WEDDING CARD</span>
-          </button>
-
-          <a
-            href="Teena_Kuldeep_New_Royal_Digital_Invitation.pdf"
-            download="Teena_Kuldeep_New_Royal_Digital_Invitation.pdf"
-            className="hero-btn btn-download-pdf"
-            onClick={onDownloadPDF}
-            aria-label="Download official royal wedding invitation PDF"
-          >
-            <span className="btn-icon">📥</span>
-            <span className="btn-text">DOWNLOAD PDF</span>
-          </a>
-
-          <button
-            className="hero-btn btn-secondary-itinerary"
-            onClick={() => scrollToSection('events-section')}
-            aria-label="Jump to event schedule"
-          >
-            <span className="btn-icon">🗓️</span>
-            <span className="btn-text">ITINERARY</span>
-          </button>
-
-          <button
-            className="hero-btn btn-secondary-venue"
-            onClick={() => scrollToSection('venue-section')}
-            aria-label="Jump to venue directions"
-          >
-            <span className="btn-icon">📍</span>
-            <span className="btn-text">VENUE</span>
-          </button>
-        </div>
-
         {/* Smooth Scroll Down Indicator */}
         <div
           className="hero-scroll-indicator"
