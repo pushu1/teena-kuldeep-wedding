@@ -1,23 +1,35 @@
 import urllib.request
 import time
+import json
+import pypdf
 
-url = f'https://pushu1.github.io/param-pummy-wedding/?t={int(time.time())}'
-req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0', 'Cache-Control': 'no-cache'})
+LIVE_URL = "https://pushu1.github.io/teena-kuldeep-wedding/"
+print(f"Checking live deployment at: {LIVE_URL}")
 
-try:
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        print('HTTP Status:', resp.status)
-        print('Last-Modified:', resp.headers.get('Last-Modified'))
-        print('ETag:', resp.headers.get('ETag'))
-        raw = resp.read()
-        content = raw.decode('utf-8', errors='ignore')
-        print('Content Length:', len(content))
-        print('Titles found:', [l.strip() for l in content.splitlines() if 'title' in l.lower()][:3])
-        print('Has <div id="root">:', '<div id="root">' in content)
-        print('Has app.js:', 'app.js' in content)
-        print('Has Teena:', 'Teena' in content or 'TEENA' in content)
-        print('Has Naina:', 'Naina' in content or 'NAINA' in content)
-        print('Has Adigaud:', 'Adigaud' in content or 'ADIGAUD' in content)
-        print('Has Vajpayee:', 'Vajpayee' in content or 'VAJPAYEE' in content)
-except Exception as e:
-    print('Request error:', e)
+max_attempts = 15
+for attempt in range(1, max_attempts + 1):
+    time.sleep(3)
+    try:
+        # Check index.html
+        req = urllib.request.Request(LIVE_URL + "index.html", headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req) as resp:
+            html = resp.read().decode('utf-8', errors='ignore')
+            has_teena = "TEENA" in html or "teena-kuldeep" in html
+            
+        # Check app.js
+        req_js = urllib.request.Request(LIVE_URL + "app.js", headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req_js) as resp_js:
+            js = resp_js.read().decode('utf-8', errors='ignore')
+            has_chanda = "Chanda Devi" in js
+            has_jasraj = "Jasraj" in js
+            has_manju = "Manju Devi" in js
+            has_adigaud = "Adigaud" in js
+
+        print(f"Attempt {attempt}: index.html OK ({len(html)} bytes), app.js OK ({len(js)} bytes)")
+        print(f"  has_teena: {has_teena}, has_chanda: {has_chanda}, has_jasraj: {has_jasraj}, has_adigaud: {has_adigaud}")
+
+        if has_teena and has_chanda and has_jasraj and has_adigaud:
+            print("\n[SUCCESS] Live website is FULLY DEPLOYED and serving the latest build!")
+            break
+    except Exception as e:
+        print(f"Attempt {attempt}: {e}")

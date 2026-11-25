@@ -689,36 +689,7 @@ Looking forward to celebrating this royal wedding on 11 Dec 2026!`;
         alt: "Lord Ganesha",
         className: "footer-ganesha-img"
       }
-    )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-sacred-blessing" }, "|| \u0950 \u0936\u094D\u0930\u0940 \u0917\u0923\u0947\u0936\u093E\u092F \u0928\u092E\u0903 \u2022 \u0936\u0941\u092D\u0902 \u092D\u0935\u0924\u0941 ||"), /* @__PURE__ */ import_react9.default.createElement("blockquote", { className: "footer-treasured-quote" }, "\u201CYour Presence Is Our Greatest Gift.", /* @__PURE__ */ import_react9.default.createElement("br", null), "Your Blessings Are Our Greatest Treasure.\u201D"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-couple-signature" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "footer-couple-names" }, "TEENA & KULDEEP"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "footer-regards-line" }, "With Love and Warm Regards"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "footer-family-signoff" }, "Vajpayee & Upadhyay Families \u2022 Pali & Jaipur, Rajasthan")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-actions-row" }, /* @__PURE__ */ import_react9.default.createElement(
-      "button",
-      {
-        className: "footer-btn btn-view-card-footer",
-        onClick: onOpenCardViewer,
-        "aria-label": "Open digital wedding invitation card"
-      },
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-icon" }, "\u{1F4DC}"),
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-text" }, "VIEW WEDDING CARD")
-    ), /* @__PURE__ */ import_react9.default.createElement(
-      "a",
-      {
-        href: "Teena_Kuldeep_New_Royal_Digital_Invitation.pdf",
-        download: "Teena_Kuldeep_New_Royal_Digital_Invitation.pdf",
-        className: "footer-btn btn-download-pdf-footer",
-        onClick: onDownloadPDF,
-        "aria-label": "Download official royal wedding invitation PDF"
-      },
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-icon" }, "\u{1F4E5}"),
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-text" }, "DOWNLOAD PDF INVITATION")
-    ), /* @__PURE__ */ import_react9.default.createElement(
-      "button",
-      {
-        className: "footer-btn btn-scroll-top",
-        onClick: scrollToTop,
-        "aria-label": "Scroll back to top of invitation"
-      },
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-icon" }, "\u2B06"),
-      /* @__PURE__ */ import_react9.default.createElement("span", { className: "btn-text" }, "BACK TO TOP")
-    )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-bottom-divider" }), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-sub-bar" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "sub-bar-text" }, "The Royal Wedding Celebration 2026 \u2022 Teena & Kuldeep \u2022 Jaipur, Rajasthan"))));
+    )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-sacred-blessing" }, "|| \u0950 \u0936\u094D\u0930\u0940 \u0917\u0923\u0947\u0936\u093E\u092F \u0928\u092E\u0903 \u2022 \u0936\u0941\u092D\u0902 \u092D\u0935\u0924\u0941 ||"), /* @__PURE__ */ import_react9.default.createElement("blockquote", { className: "footer-treasured-quote" }, "\u201CYour Presence Is Our Greatest Gift.", /* @__PURE__ */ import_react9.default.createElement("br", null), "Your Blessings Are Our Greatest Treasure.\u201D"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-couple-signature" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "footer-couple-names" }, "TEENA & KULDEEP"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "footer-regards-line" }, "With Love and Warm Regards"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "footer-family-signoff" }, "Vajpayee & Upadhyay Families \u2022 Pali & Jaipur, Rajasthan")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-bottom-divider" }), /* @__PURE__ */ import_react9.default.createElement("div", { className: "footer-sub-bar" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "sub-bar-text" }, "The Royal Wedding Celebration 2026 \u2022 Teena & Kuldeep \u2022 Jaipur, Rajasthan"))));
   }
 
   // src/components/InvitationViewerModal.jsx

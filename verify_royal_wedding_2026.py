@@ -309,12 +309,37 @@ def run_tests():
         assert "CHAMPALAL" in gl.get('gpNames', '').upper(), f"Champalal missing from grandparents: {gl}"
         print("Groom Lineage Hierarchy PASSED: SON OF (Mrs. Chanda Devi & Mr. Jasraj Ji Upadhyay) and GRANDSON OF (Late Mrs. Pepi Devi & Late Mr. Champalal Ji Upadhyay) verified!")
 
+        # Check Footer Button Removal
+        footer_btn_check = cdp.send("Runtime.evaluate", {
+            "expression": """(() => {
+                const footer = document.getElementById('footer-section');
+                const row = footer.querySelector('.footer-actions-row');
+                const btn1 = footer.querySelector('.btn-view-card-footer');
+                const btn2 = footer.querySelector('.btn-download-pdf-footer');
+                const btn3 = footer.querySelector('.btn-scroll-top');
+                return {
+                    hasRow: !!row,
+                    hasBtn1: !!btn1,
+                    hasBtn2: !!btn2,
+                    hasBtn3: !!btn3
+                };
+            })()""",
+            "returnByValue": True
+        })
+        fc = footer_btn_check.get('result', {}).get('result', {}).get('value', {})
+        print(f"Footer Button Audit: {fc}")
+        assert not fc.get('hasRow'), "ERROR: .footer-actions-row found in footer!"
+        assert not fc.get('hasBtn1'), "ERROR: View Card button found in footer!"
+        assert not fc.get('hasBtn2'), "ERROR: Download PDF button found in footer!"
+        assert not fc.get('hasBtn3'), "ERROR: Back to Top button found in footer!"
+        print("Bottom action buttons successfully and completely removed from footer!")
+
         # ----------------------------------------------------
-        # TEST 5: FULL-SCREEN CARD VIEWER MODAL
+        # TEST 5: FULL-SCREEN CARD VIEWER MODAL VIA STICKY NAV
         # ----------------------------------------------------
-        print("\n--- TEST 5: Opening Card Viewer Modal ---")
+        print("\n--- TEST 5: Opening Card Viewer Modal via Nav ---")
         cdp.send("Runtime.evaluate", {
-            "expression": "document.querySelector('.btn-view-card-footer').click()"
+            "expression": "document.querySelector('.nav-btn-view-card').click()"
         })
         time.sleep(1)
         screenshot(cdp, "royal_12_viewer_modal_single_page.png")
@@ -326,15 +351,15 @@ def run_tests():
         time.sleep(0.5)
 
         # ----------------------------------------------------
-        # TEST 6: VERIFY DOWNLOAD LINK IN NAV AND FOOTER
+        # TEST 6: VERIFY DOWNLOAD LINK IN NAV
         # ----------------------------------------------------
         print("\n--- TEST 6: PDF Download Link Verification ---")
         dl_eval = cdp.send("Runtime.evaluate", {
-            "expression": "document.querySelector('.btn-download-pdf-footer').getAttribute('href')",
+            "expression": "document.querySelector('.nav-btn-download-pdf').getAttribute('href')",
             "returnByValue": True
         })
         dl_href = dl_eval.get('result', {}).get('result', {}).get('value', '')
-        print(f"Footer Download Button Href: {dl_href}")
+        print(f"Nav Download Button Href: {dl_href}")
         assert "Teena_Kuldeep" in dl_href and dl_href.endswith(".pdf"), f"Unexpected download link: {dl_href}"
 
         # Test downloading via HTTP server

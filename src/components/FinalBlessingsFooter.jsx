@@ -47,38 +47,6 @@ export default function FinalBlessingsFooter({ onOpenCardViewer, onDownloadPDF }
           </p>
         </div>
 
-        {/* Call to Actions */}
-        <div className="footer-actions-row">
-          <button
-            className="footer-btn btn-view-card-footer"
-            onClick={onOpenCardViewer}
-            aria-label="Open digital wedding invitation card"
-          >
-            <span className="btn-icon">📜</span>
-            <span className="btn-text">VIEW WEDDING CARD</span>
-          </button>
-
-          <a
-            href="Teena_Kuldeep_New_Royal_Digital_Invitation.pdf"
-            download="Teena_Kuldeep_New_Royal_Digital_Invitation.pdf"
-            className="footer-btn btn-download-pdf-footer"
-            onClick={onDownloadPDF}
-            aria-label="Download official royal wedding invitation PDF"
-          >
-            <span className="btn-icon">📥</span>
-            <span className="btn-text">DOWNLOAD PDF INVITATION</span>
-          </a>
-
-          <button
-            className="footer-btn btn-scroll-top"
-            onClick={scrollToTop}
-            aria-label="Scroll back to top of invitation"
-          >
-            <span className="btn-icon">⬆</span>
-            <span className="btn-text">BACK TO TOP</span>
-          </button>
-        </div>
-
         <div className="footer-bottom-divider"></div>
 
         {/* Bottom Year & Traditional Copyright */}
