@@ -42,7 +42,7 @@ server = HTTPServer(('127.0.0.1', PORT_HTTP), WeddingHandler)
 server_thread = threading.Thread(target=server.serve_forever, daemon=True)
 server_thread.start()
 
-profile_dir = os.path.join(PROJECT_DIR, f'.browser_courgette_{PORT_CDP}')
+profile_dir = os.path.join(PROJECT_DIR, f'.browser_roboto_{PORT_CDP}')
 os.makedirs(profile_dir, exist_ok=True)
 
 class CDP:
@@ -141,23 +141,8 @@ def run():
         })
         time.sleep(2)
 
-        # Check envelope typography before opening
-        env_font_eval = cdp.send('Runtime.evaluate', {
-            'expression': '''(function() {
-                var el = document.querySelector('.env-couple-title');
-                var sub = document.querySelector('.env-sub-title');
-                var dt = document.querySelector('.env-date-strip');
-                return {
-                    couple_font: el ? window.getComputedStyle(el).fontFamily : 'null',
-                    sub_font: sub ? window.getComputedStyle(sub).fontFamily : 'null',
-                    date_font: dt ? window.getComputedStyle(dt).fontFamily : 'null',
-                };
-            })()''',
-            'returnByValue': True
-        })
-        print("Envelope typography:", env_font_eval.get('result', {}).get('value'))
-
-        screenshot(cdp, 'courgette_01_desktop_envelope.png')
+        # Envelope screenshot
+        screenshot(cdp, 'roboto_slab_01_desktop_envelope.png')
 
         # Skip intro directly to main website flow
         cdp.send('Runtime.evaluate', {
@@ -168,95 +153,115 @@ def run():
         })
         time.sleep(2.5)
 
-        # Evaluate computed font families on all key elements in the main flow
+        # Evaluate computed font families on all requested elements in the main flow
         font_eval = cdp.send('Runtime.evaluate', {
             'expression': '''(function() {
-                function getFF(sel) {
-                    var el = document.querySelector(sel);
-                    return el ? window.getComputedStyle(el).fontFamily : 'NOT_FOUND';
-                }
-                return {
-                    hero_name_primary: getFF('.hero-name-primary'),
-                    hero_shubh_vivah: getFF('.hero-shubh-vivah'),
-                    date_main: getFF('.date-main'),
-                    hero_journey_quote: getFF('.hero-journey-quote'),
-                    section_title_gold: getFF('.section-title-gold'),
-                    section_subtitle_script: getFF('.section-subtitle-script'),
-                    profile_name: getFF('.profile-name'),
-                    family_welcome_note: getFF('.family-welcome-note .note-text'),
-                    day_main_heading: getFF('.day-main-heading'),
-                    day_calendar_date: getFF('.day-calendar-date'),
-                    event_title: getFF('.event-title'),
-                    venue_name_title: getFF('.venue-name-title'),
-                    quote_text: getFF('.quote-text'),
-                    host_name: getFF('.host-name'),
-                    blessings_title: getFF('.blessings-title'),
-                    footer_treasured_quote: getFF('.footer-treasured-quote'),
-                    footer_couple_names: getFF('.footer-couple-names'),
-                    brand_title: getFF('.brand-title'),
-                    body_font: window.getComputedStyle(document.body).fontFamily
-                };
+                var sels = [
+                    ['Main Wedding Title (Envelope)', '.env-sub-title'],
+                    ['TEENA & KULDEEP (Hero)', '.hero-name-primary'],
+                    ['Section Headings', '.section-title-gold'],
+                    ['Wedding Date Highlight', '.date-main'],
+                    ['Bride/Groom Profile Name', '.profile-name'],
+                    ['Relationship Heading', '.relationship-heading'],
+                    ['Parent Lineage', '.parent-name'],
+                    ['Wedding Event Title', '.event-title'],
+                    ['Venue Heading', '.venue-name-title'],
+                    ['Family Invitation Quote', '.quote-text'],
+                    ['Compliments Host Name', '.host-name'],
+                    ['RSVP Blessings Title', '.blessings-title'],
+                    ['Countdown Numbers', '.unit-number'],
+                    ['Countdown Labels', '.unit-label'],
+                    ['Buttons & Nav (View Card)', '.nav-btn-view-card'],
+                    ['Buttons & Nav (Download PDF)', '.nav-btn-download-pdf'],
+                    ['Music Pill Button', '.royal-music-pill-btn'],
+                    ['Footer Couple Signature', '.footer-couple-names'],
+                    ['Sticky Nav Brand Title', '.brand-title'],
+                    ['Base Body Typography', 'body']
+                ];
+                return sels.map(function(s) {
+                    var el = document.querySelector(s[1]);
+                    return {
+                        label: s[0],
+                        selector: s[1],
+                        fontFamily: el ? window.getComputedStyle(el).fontFamily : 'NOT FOUND',
+                        fontWeight: el ? window.getComputedStyle(el).fontWeight : 'NOT FOUND'
+                    };
+                });
             })()''',
             'returnByValue': True
         })
 
-        results = font_eval.get('result', {}).get('value', {})
-        print("\n=== COMPUTED FONT FAMILIES ===")
-        all_courgette = True
-        for k, v in results.items():
-            print(f"  {k}: {v}")
-            if k != 'body_font' and 'Courgette' not in v:
-                all_courgette = False
+        results = font_eval.get('result', {}).get('result', {}).get('value', [])
+        print("\n" + "="*80)
+        print(f"{'ELEMENT CATEGORY':<30} | {'COMPUTED FONT FAMILY':<30} | {'WEIGHT'}")
+        print("="*80)
+        all_roboto_slab = True
+        has_courgette = False
+        for row in results:
+            print(f"{row['label']:<30} | {row['fontFamily']:<30} | {row['fontWeight']}")
+            if 'Roboto Slab' not in row['fontFamily']:
+                all_roboto_slab = False
+            if 'Courgette' in row['fontFamily']:
+                has_courgette = True
 
-        print("\nAll key decorative typography using Courgette?", all_courgette)
+        print("="*80)
+        print(f"All elements verified using 'Roboto Slab'? {all_roboto_slab}")
+        print(f"Courgette completely eliminated (0 instances)? {not has_courgette}")
 
         # Desktop Hero Screenshot
-        screenshot(cdp, 'courgette_02_desktop_hero.png')
+        screenshot(cdp, 'roboto_slab_02_desktop_hero.png')
 
         # Scroll to Bride & Groom Family
         cdp.send('Runtime.evaluate', {
             'expression': '''document.getElementById('bride-section').scrollIntoView();'''
         })
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_03_desktop_bride_family.png')
+        screenshot(cdp, 'roboto_slab_03_desktop_bride_family.png')
 
         # Scroll to Celebrations / Events
         cdp.send('Runtime.evaluate', {
             'expression': '''document.getElementById('events-section').scrollIntoView();'''
         })
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_04_desktop_events.png')
+        screenshot(cdp, 'roboto_slab_04_desktop_events.png')
 
         # Scroll to Venue
         cdp.send('Runtime.evaluate', {
             'expression': '''document.getElementById('venue-section').scrollIntoView();'''
         })
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_05_desktop_venue.png')
+        screenshot(cdp, 'roboto_slab_05_desktop_venue.png')
+
+        # Scroll to Countdown
+        cdp.send('Runtime.evaluate', {
+            'expression': '''document.getElementById('countdown-section').scrollIntoView();'''
+        })
+        time.sleep(1.5)
+        screenshot(cdp, 'roboto_slab_06_desktop_countdown.png')
 
         # Scroll to Footer
         cdp.send('Runtime.evaluate', {
             'expression': '''window.scrollTo(0, document.body.scrollHeight);'''
         })
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_06_desktop_footer.png')
+        screenshot(cdp, 'roboto_slab_07_desktop_footer.png')
 
-        # 2. Mobile Viewport (390x844 - iPhone 14 / modern mobile)
+        # 2. Mobile Viewport (390x844 - iPhone 14)
         cdp.send('Emulation.setDeviceMetricsOverride', {
             'width': 390, 'height': 844, 'deviceScaleFactor': 2, 'mobile': True
         })
         cdp.send('Runtime.evaluate', {'expression': '''window.scrollTo(0, 0);'''})
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_07_mobile_hero.png')
+        screenshot(cdp, 'roboto_slab_08_mobile_hero.png')
 
-        # Mobile Family section
+        # Mobile Groom section
         cdp.send('Runtime.evaluate', {
             'expression': '''document.getElementById('groom-section').scrollIntoView();'''
         })
         time.sleep(1.5)
-        screenshot(cdp, 'courgette_08_mobile_groom.png')
+        screenshot(cdp, 'roboto_slab_09_mobile_groom.png')
 
-        print("\nAll typography tests & verification screenshots completed successfully!")
+        print("\nAll Roboto Slab typography tests & verification screenshots completed successfully!")
 
     finally:
         proc.terminate()

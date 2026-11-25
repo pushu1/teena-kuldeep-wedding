@@ -21,9 +21,9 @@
   --color-maroon: #6B1724;
   --color-maroon-dark: #4A0E17;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-script: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Lora', Georgia, serif;
+  --font-heading: 'Roboto Slab', serif;
+  --font-script: 'Roboto Slab', serif;
+  --font-body: 'Roboto Slab', serif;
   --font-devanagari: 'Rozha One', 'Yatra One', 'Nirmala UI', serif;
 
   --phone-width: 430px;
