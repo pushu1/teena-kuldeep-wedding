@@ -3,6 +3,8 @@
    Luxury Royal Indian Heritage Invitation Design System
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
 :root {
   --c-burgundy: #641B2E;
   --c-maroon: #3B101C;
@@ -12,10 +14,10 @@
   --c-ivory: #FFF9ED;
   --c-royal-black: #151313;
 
-  --font-royal-heading: 'Playfair Display', 'Cinzel', Georgia, serif;
-  --font-royal-names: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-royal-script: 'Cormorant Garamond', Georgia, serif;
-  --font-royal-body: 'Montserrat', sans-serif;
+  --font-royal-heading: 'Courgette', cursive, Georgia, serif;
+  --font-royal-names: 'Courgette', cursive, Georgia, serif;
+  --font-royal-script: 'Courgette', cursive, Georgia, serif;
+  --font-royal-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Base Body & App Container */
@@ -229,25 +231,25 @@ body {
   letter-spacing: 1px;
 }
 .card-title {
-  font-family: var(--font-royal-heading);
-  font-size: 11px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 13px;
+  font-weight: 400;
   color: var(--c-burgundy);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
   margin-top: 2px;
 }
 .card-couple {
-  font-family: var(--font-royal-heading);
-  font-size: 16px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 19px;
+  font-weight: 400;
   color: var(--c-maroon);
 }
 .card-date {
-  font-family: var(--font-royal-body);
-  font-size: 8px;
-  font-weight: 600;
+  font-family: 'Courgette', cursive;
+  font-size: 10px;
+  font-weight: 400;
   color: var(--c-gold-dark);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-top: 2px;
 }
 .card-venue {
@@ -399,26 +401,26 @@ body {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 .env-couple-title {
-  font-family: var(--font-royal-heading);
-  font-size: 20px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 24px;
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
   margin: 4px 0;
   text-shadow: 0 2px 6px rgba(0,0,0,0.8);
 }
 .env-sub-title {
-  font-family: var(--font-royal-script);
-  font-size: 13px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: 15px;
+  font-style: normal;
   color: var(--c-gold);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 .env-date-strip {
-  font-family: var(--font-royal-body);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  font-family: 'Courgette', cursive;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: var(--c-gold-light);
   margin-top: 4px;
 }
@@ -520,11 +522,11 @@ body {
   cursor: pointer;
 }
 .brand-title {
-  font-family: var(--font-royal-heading);
-  font-size: 13px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 15px;
+  font-weight: 400;
   color: var(--c-gold-light);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
 }
 .nav-links-row {
   display: flex;
@@ -671,10 +673,11 @@ body {
   color: var(--c-gold);
 }
 .hero-shubh-vivah {
-  font-family: var(--font-royal-script);
-  font-size: 13px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(15px, 3.2vw, 18px);
+  font-style: normal;
   color: var(--c-gold-light);
+  letter-spacing: 0.5px;
 }
 
 .hero-royal-badge {
@@ -706,21 +709,21 @@ body {
   margin-bottom: 16px;
 }
 .hero-name-primary {
-  font-family: var(--font-royal-heading);
-  font-size: clamp(28px, 6vw, 46px);
-  font-weight: 800;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(32px, 7vw, 52px);
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 .hero-aka-tag {
-  font-family: var(--font-royal-script);
+  font-family: 'Courgette', cursive;
   font-size: clamp(16px, 3.5vw, 24px);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--c-gold-light);
   margin-left: 8px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 .hero-ampersand-wrapper {
   display: flex;
@@ -735,9 +738,9 @@ body {
   background: linear-gradient(90deg, transparent, var(--c-gold), transparent);
 }
 .ampersand-symbol {
-  font-family: var(--font-royal-script);
-  font-style: italic;
-  font-size: 28px;
+  font-family: 'Courgette', cursive;
+  font-style: normal;
+  font-size: clamp(26px, 5vw, 36px);
   color: var(--c-gold);
 }
 
@@ -753,10 +756,10 @@ body {
   margin-bottom: 12px;
 }
 .date-main {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: 'Courgette', cursive;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: var(--c-ivory);
 }
 .date-icon {
@@ -765,12 +768,13 @@ body {
 }
 
 .hero-journey-quote {
-  font-family: var(--font-royal-script);
-  font-size: 19px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(16px, 3.5vw, 21px);
+  font-style: normal;
   color: var(--c-gold-light);
-  margin: 4px 0 28px;
-  letter-spacing: 0.5px;
+  margin: 8px 0 24px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
 }
 
 .hero-scroll-indicator {
@@ -868,18 +872,19 @@ body {
   display: block;
 }
 .section-title-gold {
-  font-family: var(--font-royal-heading);
-  font-size: clamp(20px, 4.5vw, 28px);
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   margin: 6px 0 4px;
 }
 .section-subtitle-script {
-  font-family: var(--font-royal-script);
-  font-size: 14px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(14px, 3vw, 16px);
+  font-style: normal;
   color: var(--c-gold-light);
+  letter-spacing: 0.3px;
   margin: 0;
 }
 .section-title-divider {
@@ -921,16 +926,17 @@ body {
   margin-bottom: 14px;
 }
 .invitation-primary-text {
-  font-family: var(--font-royal-script);
-  font-size: clamp(15px, 3vw, 18px);
+  font-family: 'Courgette', cursive;
+  font-size: clamp(16px, 3.2vw, 19px);
   line-height: 1.6;
   color: var(--c-ivory);
   margin-bottom: 14px;
+  letter-spacing: 0.3px;
 }
 .invitation-primary-text strong {
-  font-family: var(--font-royal-heading);
+  font-family: 'Courgette', cursive;
   color: var(--c-gold-light);
-  font-weight: 700;
+  font-weight: 600;
 }
 .family-hosts-signature {
   margin: 20px 0 16px;
@@ -1045,12 +1051,13 @@ body {
 }
 
 .family-welcome-note .note-text {
-  font-family: var(--font-royal-script);
-  font-size: 15px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: 16px;
+  font-style: normal;
   color: var(--c-ivory);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
+  letter-spacing: 0.3px;
 }
   display: flex;
   flex-direction: column;
@@ -1095,16 +1102,16 @@ body {
 }
 
 .profile-name {
-  font-family: var(--font-royal-heading);
-  font-size: 20px;
-  font-weight: 800;
+  font-family: 'Courgette', cursive;
+  font-size: 26px;
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin: 6px 0 2px;
 }
 .profile-nickname {
-  font-family: var(--font-royal-script);
-  font-size: 15px;
+  font-family: 'Courgette', cursive;
+  font-size: 16px;
   color: var(--c-gold-light);
   margin-left: 6px;
 }
@@ -1258,17 +1265,21 @@ body {
   border-radius: 10px;
 }
 .day-main-heading {
-  font-family: var(--font-royal-heading);
-  font-size: 18px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 21px;
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin: 0;
 }
 .day-calendar-date {
-  font-family: var(--font-royal-body);
-  font-size: 12px;
-  font-weight: 600;
+  font-family: 'Courgette', cursive;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--c-gold-light);
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
   color: var(--c-gold-light);
   margin-top: 2px;
 }
@@ -1350,10 +1361,11 @@ body {
   border-radius: 4px;
 }
 .event-title {
-  font-family: var(--font-royal-heading);
-  font-size: 14px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--c-ivory);
+  letter-spacing: 0.3px;
   margin: 0;
 }
 .event-time-badge {
@@ -1411,11 +1423,11 @@ body {
   margin-bottom: 8px;
 }
 .venue-name-title {
-  font-family: var(--font-royal-heading);
-  font-size: clamp(17px, 3.8vw, 22px);
-  font-weight: 800;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(20px, 4vw, 25px);
+  font-weight: 400;
   color: var(--c-ivory);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin: 0 0 8px;
 }
 .venue-address-badge {
@@ -1537,6 +1549,28 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
 }
+.countdown-completed-banner {
+  text-align: center;
+  padding: 16px 20px;
+}
+.completed-sparkles {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.completed-title {
+  font-family: 'Courgette', cursive;
+  font-size: 24px;
+  color: var(--c-gold-light);
+  letter-spacing: 0.5px;
+  margin: 6px 0;
+}
+.completed-subtitle {
+  font-family: 'Courgette', cursive;
+  font-size: 16px;
+  color: var(--c-ivory);
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
 .countdown-muhurat-strip {
   position: relative;
   z-index: 5;
@@ -1568,12 +1602,13 @@ body {
   padding: 16px 20px;
 }
 .quote-text {
-  font-family: var(--font-royal-script);
-  font-size: 15px;
-  font-style: italic;
+  font-family: 'Courgette', cursive;
+  font-size: 16.5px;
+  font-style: normal;
   color: var(--c-ivory);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 4px 0;
+  letter-spacing: 0.3px;
 }
 
 .compliments-hosts-grid {
@@ -1613,11 +1648,12 @@ body {
   color: var(--c-gold);
 }
 .host-name {
-  font-family: var(--font-royal-heading);
-  font-size: 16px;
-  font-weight: 800;
+  font-family: 'Courgette', cursive;
+  font-size: 19px;
+  font-weight: 400;
   color: var(--c-ivory);
   margin: 0 0 2px;
+  letter-spacing: 0.5px;
 }
 .host-relation {
   font-size: 11px;
@@ -1672,11 +1708,12 @@ body {
   margin-bottom: 14px;
 }
 .blessings-title {
-  font-family: var(--font-royal-heading);
-  font-size: 14px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 17px;
+  font-weight: 400;
   color: var(--c-gold-light);
   margin: 0 0 4px;
+  letter-spacing: 0.3px;
 }
 .blessings-subtitle {
   font-size: 11px;
@@ -1805,29 +1842,35 @@ body {
 }
 
 .footer-treasured-quote {
-  font-family: var(--font-royal-heading);
-  font-size: clamp(16px, 3.5vw, 22px);
-  font-style: italic;
-  line-height: 1.5;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(18px, 4vw, 25px);
+  font-style: normal;
+  line-height: 1.6;
   color: var(--c-ivory);
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto 20px;
+  letter-spacing: 0.3px;
 }
 
 .footer-couple-signature {
   margin-bottom: 24px;
 }
 .footer-couple-names {
-  font-family: var(--font-royal-heading);
-  font-size: clamp(22px, 5vw, 32px);
-  font-weight: 800;
+  font-family: 'Courgette', cursive;
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 400;
   color: var(--c-gold-light);
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   margin: 0 0 4px;
 }
 .footer-regards-line {
-  font-family: var(--font-royal-script);
-  font-size: 15px;
+  font-family: 'Courgette', cursive;
+  font-size: 17px;
+  font-style: normal;
+  color: var(--c-gold);
+  margin: 0 0 4px;
+  letter-spacing: 0.3px;
+}
   font-style: italic;
   color: var(--c-gold);
   margin: 0 0 4px;
@@ -2059,10 +2102,11 @@ body {
   text-align: left;
 }
 .caption-title {
-  font-family: var(--font-royal-heading);
-  font-size: 12px;
-  font-weight: 700;
+  font-family: 'Courgette', cursive;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--c-ivory);
+  letter-spacing: 0.3px;
 }
 .caption-subtitle {
   font-size: 10px;
