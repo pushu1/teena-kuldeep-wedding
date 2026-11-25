@@ -10,7 +10,7 @@ export default function BrideFamilySection() {
         {/* Section Header */}
         <div className="section-header-flourish">
           <span className="shloka-text">|| वधु पक्ष • जयपुर ||</span>
-          <div className="family-origin-pill">THE RESIGNED VAJPAYEE FAMILY OF JAIPUR</div>
+          <div className="family-origin-pill">THE RESPECTED VAJPAYEE FAMILY OF JAIPUR</div>
           <h2 className="section-title-gold">THE BRIDE'S FAMILY</h2>
           <p className="section-subtitle-script">
             Welcoming you with heartfelt warmth &amp; traditional Rajasthani hospitality

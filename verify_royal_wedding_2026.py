@@ -201,13 +201,13 @@ def run_tests():
         # TEST 4: SCROLL MAIN SECTIONS ON DESKTOP
         # ----------------------------------------------------
         print("\n--- TEST 4: Main Sections Inspection ---")
-        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('invitation-section').scrollIntoView()"})
+        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('bride-section').scrollIntoView()"})
         time.sleep(0.8)
-        screenshot(cdp, "royal_05_desktop_formal_invitation.png")
+        screenshot(cdp, "royal_05_desktop_bride_family_section.png")
 
-        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('couple-section').scrollIntoView()"})
+        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('groom-section').scrollIntoView()"})
         time.sleep(0.8)
-        screenshot(cdp, "royal_06_desktop_bride_groom_cards.png")
+        screenshot(cdp, "royal_06_desktop_groom_family_section.png")
 
         cdp.send("Runtime.evaluate", {"expression": "document.getElementById('events-section').scrollIntoView()"})
         time.sleep(0.8)
@@ -243,6 +243,9 @@ def run_tests():
         assert "CHAMPALAL" in dom_text.upper(), "ERROR: Champalal missing in live website text!"
         assert "PEPI DEVI" in dom_text.upper(), "ERROR: Late Mrs. Pepi Devi missing in live website text!"
         assert "JASRAJ" in dom_text.upper(), "ERROR: Jasraj Ji Upadhyay missing in live website text!"
+        assert "ADIGAUD" in dom_text.upper(), "ERROR: ADIGAUD venue missing in live website text!"
+        assert "MAHESH NAGAR" in dom_text.upper(), "ERROR: MAHESH NAGAR missing in live website text!"
+        assert "ADINATH" not in dom_text.upper(), "ERROR: ADINATH found in live website text!"
         print("DOM Content Check PASSED: TEENA & KULDEEP with Mrs. Manju Devi & Late Mr. Champalal Ji Upadhyay verified!")
 
         # ----------------------------------------------------
@@ -334,9 +337,9 @@ def run_tests():
         time.sleep(0.6)
         screenshot(cdp, "royal_13_mobile_hero_view.png")
 
-        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('couple-section').scrollIntoView()"})
+        cdp.send("Runtime.evaluate", {"expression": "document.getElementById('bride-section').scrollIntoView()"})
         time.sleep(0.6)
-        screenshot(cdp, "royal_14_mobile_couple_section.png")
+        screenshot(cdp, "royal_14_mobile_bride_family_section.png")
 
         cdp.send("Runtime.evaluate", {"expression": "document.getElementById('events-section').scrollIntoView()"})
         time.sleep(0.6)
